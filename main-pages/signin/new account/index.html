@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="style-create-account.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@600&family=Kanit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">Create Account</h1>
+        <div class="box">
+            <div class="main">
+                <!-- Google Sign Up with image inside the button -->
+                <button class="auto-signin google" onclick="animateButton(this)">
+                    <img src="images/google.svg" alt="Google Icon" class="auto-signin-icon">
+                    Sign up with Google
+                </button>
+
+                <!-- Facebook Sign Up with image inside the button -->
+                <button class="auto-signin facebook" onclick="animateButton(this)">
+                    <img src="images/facebook.svg" alt="Facebook Icon" class="auto-signin-icon">
+                    Sign up with Facebook
+                </button>
+
+                <div class="divider"></div>
+
+                <form id="registerForm" class="details" onsubmit="handleRegister(event)">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                    <label for="newUsername">Email:</label>
+                    <input type="email" id="newUsername" name="email" placeholder="Enter your email" required>
+
+                    <label for="newPassword">Password:</label>
+                    <input type="password" id="newPassword" name="password" placeholder="Enter your password" required>
+
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+
+                    <div id="message" style="margin: 10px 0; padding: 10px; display: none;"></div>
+
+                    <button type="submit" onclick="animateButton(this)">Create Account</button>
+                </form>
+
+                <div class="other-options">
+                    <a href="../sign-in.html" class="sign-in">Already have an account? Sign in</a>
+                    <a href="../forget password/index.html" class="forgot-password">Forgot password?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function animateButton(button) {
+            button.classList.add('button-clicked');
+            setTimeout(() => {
+                button.classList.remove('button-clicked');
+            }, 300); // Adjust the duration to match the transition duration
+        }
+
+        async function handleRegister(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('newUsername').value;
+            const password = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                showMessage('Passwords do not match', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:5000/api/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        password,
+                        confirmPassword
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showMessage('Account created successfully! Redirecting to sign in...', 'success');
+                    setTimeout(() => {
+                        window.location.href = '../sign-in.html';
+                    }, 2000);
+                } else {
+                    showMessage(data.error || 'Registration failed', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showMessage('Network error. Please try again.', 'error');
+            }
+        }
+
+        function showMessage(message, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = message;
+            messageDiv.style.display = 'block';
+            messageDiv.style.color = type === 'success' ? 'green' : 'red';
+            messageDiv.style.backgroundColor = type === 'success' ? '#d4edda' : '#f8d7da';
+            messageDiv.style.border = `1px solid ${type === 'success' ? '#c3e6cb' : '#f5c6cb'}`;
+            messageDiv.style.borderRadius = '4px';
+            
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
+
