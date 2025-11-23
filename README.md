@@ -1,113 +1,95 @@
-# SoftHub Backend
+# 🚀 SoftHub Backend
 
-Backend server for SoftHub application with MongoDB integration and OTP email functionality for password reset.
+![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
+![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
+![Render](https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=white)
 
-## Features
+> A robust backend server for the SoftHub application, featuring secure authentication, MongoDB integration, and email-based OTP password reset.
 
-- User registration with password hashing (bcrypt)
-- User sign-in authentication
-- Password reset via OTP sent to email
-- MongoDB database integration
-- Secure password storage
+## 🔗 Live Demo
+**👉 [Click here to visit SoftHub](https://softhub-bwnd.onrender.com)**
 
-## Prerequisites
+---
 
-- Node.js (v14 or higher)
-- MongoDB (local installation or MongoDB Atlas account)
-- Gmail account (for sending OTP emails)
+## ✨ Features
 
-## Installation
+*   **🔐 Secure Authentication**: User registration and login with `bcrypt` password hashing.
+*   **📧 OTP Verification**: Password reset functionality using 6-digit OTPs sent via email.
+*   **🗄️ Database Integration**: Seamless connection with MongoDB for reliable data storage.
+*   **🛡️ Security First**: Input validation, secure password storage, and protected routes.
 
-1. Install dependencies:
-```bash
-npm install
-```
+---
 
-2. Create a `.env` file in the root directory:
-```bash
-cp .env.example .env
-```
+## 🛠️ Tech Stack
 
-3. Configure your `.env` file:
-   - Set `MONGODB_URI` to your MongoDB connection string
-   - Set `EMAIL_USER` to your Gmail address
-   - Set `EMAIL_PASS` to your Gmail App Password (not your regular password)
+*   **Runtime**: Node.js
+*   **Framework**: Express.js
+*   **Database**: MongoDB
+*   **Authentication**: JSON Web Tokens (JWT) & Session
+*   **Email Service**: Nodemailer (Gmail SMTP)
+*   **Deployment**: Render
 
-### Gmail App Password Setup
+---
 
-1. Go to your Google Account settings
-2. Enable 2-Step Verification
-3. Go to App Passwords: https://myaccount.google.com/apppasswords
-4. Generate a new app password for "Mail"
-5. Use this 16-character password in your `.env` file
+## 🚀 Getting Started
 
-## Running the Server
+### Prerequisites
+*   Node.js (v14+)
+*   MongoDB (Atlas or Local)
+*   Gmail Account (for OTPs)
 
-### Development mode (with auto-reload):
-```bash
-npm run dev
-```
+### Installation
 
-### Production mode:
-```bash
-npm start
-```
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/ajaygangwar945/SoftHub.git
+    cd SoftHub
+    ```
 
-The server will run on `http://localhost:5000` by default.
+2.  **Install dependencies**
+    ```bash
+    npm install
+    ```
 
-## API Endpoints
+3.  **Configure Environment**
+    Create a `.env` file in the root directory:
+    ```env
+    MONGODB_URI=your_mongodb_connection_string
+    EMAIL_USER=your_email@gmail.com
+    EMAIL_PASS=your_app_password
+    PORT=5000
+    ```
 
-### Register User
-- **POST** `/api/register`
-- **Body:**
-  ```json
-  {
-    "name": "John Doe",
-    "email": "john@example.com",
-    "password": "password123",
-    "confirmPassword": "password123"
-  }
-  ```
+4.  **Run the Server**
+    ```bash
+    # Development
+    npm run dev
 
-### Sign In
-- **POST** `/api/signin`
-- **Body:**
-  ```json
-  {
-    "email": "john@example.com",
-    "password": "password123"
-  }
-  ```
+    # Production
+    npm start
+    ```
 
-### Send OTP
-- **POST** `/api/send-otp`
-- **Body:**
-  ```json
-  {
-    "email": "john@example.com"
-  }
-  ```
+---
 
-### Reset Password
-- **POST** `/api/reset-password`
-- **Body:**
-  ```json
-  {
-    "email": "john@example.com",
-    "otp": "123456",
-    "newPassword": "newpassword123",
-    "confirmPassword": "newpassword123"
-  }
-  ```
+## 📡 API Endpoints
 
-## Database Schema
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `POST` | `/api/register` | Register a new user |
+| `POST` | `/api/signin` | Sign in an existing user |
+| `POST` | `/api/send-otp` | Send password reset OTP |
+| `POST` | `/api/reset-password` | Reset password using OTP |
 
-### User Model
+---
+
+## 📝 Database Schema (User)
+
 ```javascript
 {
   name: String,
-  email: String (unique),
-  password: String (hashed),
+  email: String (Unique),
+  password: String (Hashed),
   otp: {
     code: String,
     expiresAt: Date
@@ -116,18 +98,15 @@ The server will run on `http://localhost:5000` by default.
 }
 ```
 
-## Security Features
+---
 
-- Passwords are hashed using bcrypt (10 salt rounds)
-- OTP expires after 10 minutes
-- Email validation
-- Password confirmation matching
-- Minimum password length validation (6 characters)
+## 🛡️ Security Measures
 
-## Notes
+*   **Bcrypt Hashing**: Passwords are never stored in plain text.
+*   **Input Validation**: Strict checks for email formats and password strength.
+*   **OTP Expiry**: Reset codes expire automatically after 10 minutes.
+*   **Environment Variables**: Sensitive keys are kept out of the codebase.
 
-- OTP codes are 6-digit numbers
-- OTP expires 10 minutes after generation
-- Each OTP can only be used once
-- Passwords must be at least 6 characters long
+---
 
+Made with ❤️ by SoftHub Team
