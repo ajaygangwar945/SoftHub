@@ -4,6 +4,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hind:wght@600&family=Kanit&display=swap" rel="stylesheet">
+<script src="../config.js"></script>
 </head>
 
 <body>
@@ -88,7 +89,7 @@
       const password = document.getElementById('password').value;
 
       try {
-        const response = await fetch('http://localhost:5000/api/signin', {
+        const response = await fetch(API_CONFIG.endpoints.signin, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hind:wght@600&family=Kanit&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="../../../config.js"></script>
 </head>
+
 <body>
     <div class="container">
         <h1 class="heading">Forget Password</h1>
@@ -23,10 +26,12 @@
                     <input type="text" id="otp" name="otp" placeholder="Enter the OTP" required>
 
                     <label for="newPassword">New Password:</label>
-                    <input type="password" id="newPassword" name="newPassword" placeholder="Enter your new password" required>
+                    <input type="password" id="newPassword" name="newPassword" placeholder="Enter your new password"
+                        required>
 
                     <label for="confirmPassword">Confirm Password:</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your new password" required>
+                    <input type="password" id="confirmPassword" name="confirmPassword"
+                        placeholder="Confirm your new password" required>
 
                     <div class="options">
                         <span class="send-otp" onclick="sendOTP()">Send OTP</span>
@@ -51,14 +56,14 @@
 
         async function sendOTP() {
             const email = document.getElementById('email').value;
-            
+
             if (!email) {
                 showMessage('Please enter your email address', 'error');
                 return;
             }
 
             try {
-                const response = await fetch('http://localhost:5000/api/send-otp', {
+                const response = await fetch(API_CONFIG.endpoints.sendOTP, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -81,7 +86,7 @@
 
         async function handleResetPassword(event) {
             event.preventDefault();
-            
+
             const email = document.getElementById('email').value;
             const otp = document.getElementById('otp').value;
             const newPassword = document.getElementById('newPassword').value;
@@ -93,7 +98,7 @@
             }
 
             try {
-                const response = await fetch('http://localhost:5000/api/reset-password', {
+                const response = await fetch(API_CONFIG.endpoints.resetPassword, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -130,12 +135,12 @@
             messageDiv.style.backgroundColor = type === 'success' ? '#d4edda' : '#f8d7da';
             messageDiv.style.border = `1px solid ${type === 'success' ? '#c3e6cb' : '#f5c6cb'}`;
             messageDiv.style.borderRadius = '4px';
-            
+
             setTimeout(() => {
                 messageDiv.style.display = 'none';
             }, 5000);
         }
     </script>
 </body>
-</html>
 
+</html>

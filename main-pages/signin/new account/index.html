@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hind:wght@600&family=Kanit&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="../../../config.js"></script>
 </head>
+
 <body>
     <div class="container">
         <h1 class="heading">Create Account</h1>
@@ -40,7 +43,8 @@
                     <input type="password" id="newPassword" name="password" placeholder="Enter your password" required>
 
                     <label for="confirmPassword">Confirm Password:</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                    <input type="password" id="confirmPassword" name="confirmPassword"
+                        placeholder="Confirm your password" required>
 
                     <div id="message" style="margin: 10px 0; padding: 10px; display: none;"></div>
 
@@ -65,7 +69,7 @@
 
         async function handleRegister(event) {
             event.preventDefault();
-            
+
             const name = document.getElementById('name').value;
             const email = document.getElementById('newUsername').value;
             const password = document.getElementById('newPassword').value;
@@ -77,7 +81,7 @@
             }
 
             try {
-                const response = await fetch('http://localhost:5000/api/register', {
+                const response = await fetch(API_CONFIG.endpoints.register, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -114,12 +118,12 @@
             messageDiv.style.backgroundColor = type === 'success' ? '#d4edda' : '#f8d7da';
             messageDiv.style.border = `1px solid ${type === 'success' ? '#c3e6cb' : '#f5c6cb'}`;
             messageDiv.style.borderRadius = '4px';
-            
+
             setTimeout(() => {
                 messageDiv.style.display = 'none';
             }, 5000);
         }
     </script>
 </body>
-</html>
 
+</html>
