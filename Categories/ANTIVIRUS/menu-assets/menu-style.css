@@ -247,6 +247,10 @@ body{
   pointer-events: none;
   opacity: 0;
 }
+
+.sidebar .heading-link .platform-heading {
+  color: black;
+}
 /* hoveer color */
 .sidebar li a:hover .link_name,
 .sidebar li a:hover i{
