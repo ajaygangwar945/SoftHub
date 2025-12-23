@@ -8,7 +8,14 @@
 > A robust backend server for the SoftHub application, featuring secure authentication, MongoDB integration, and email-based OTP password reset.
 
 ## 🔗 Live Demo
-**👉 [Click here to visit SoftHub](https://softhub-bwnd.onrender.com)**
+
+<p align="left">
+  <strong>👉 Visit SoftHub Backend:</strong><br><br>
+  <a href="https://softhub-bwnd.onrender.com">
+    <img src="https://img.shields.io/badge/Render-Live%20Server-46E3B7?style=for-the-badge&logo=render&logoColor=white"/>
+  </a>
+</p>
+
 
 ---
 
