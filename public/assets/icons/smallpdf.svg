@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <circle cx="24" cy="24" r="22" fill="#E5322E"/>
+  <rect x="16" y="14" width="16" height="20" rx="2" fill="#fff"/>
+  <text x="24" y="28" text-anchor="middle" fill="#E5322E" font-size="8" font-weight="bold">PDF</text>
+</svg>
