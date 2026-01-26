@@ -4,6 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initSidebar();
+  initTheme();
   initTypedAnimation();
   initSearch();
 });
@@ -55,7 +56,7 @@ function initSidebar() {
  */
 function initTypedAnimation() {
   const typedElement = document.getElementById('typed-text');
-  
+
   if (!typedElement || typeof Typed === 'undefined') return;
 
   new Typed('#typed-text', {
@@ -80,7 +81,7 @@ function initTypedAnimation() {
  */
 function initSearch() {
   const searchInputs = document.querySelectorAll('.search-bar input');
-  
+
   searchInputs.forEach(input => {
     input.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') {
@@ -141,6 +142,34 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
+/**
+ * Theme Toggle Functionality
+ */
+function initTheme() {
+  const themeToggle = document.getElementById('theme-toggle');
+  const html = document.documentElement;
+
+  // Check for saved theme preference or system preference
+  const savedTheme = localStorage.getItem('theme');
+  const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  const currentTheme = savedTheme || systemTheme;
+
+  // Apply initial theme
+  if (currentTheme === 'dark') {
+    html.setAttribute('data-theme', 'dark');
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+  }
+}
 
 // Make showToast globally available
 window.showToast = showToast;
