@@ -5,6 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>macOS Software - SoftHub</title>
+
+  <!-- Theme Initialization -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme || systemTheme);
+    })();
+  </script>
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,8 +29,8 @@
         <a href="#" class="logo">
           <div class="logo-icon">S</div><span>SoftHub</span>
         </a>
-        <button class="sidebar-close" id="sidebar-close"><svg width="24" height="24" fill="none" stroke="currentColor"
-            stroke-width="2">
+        <button class="sidebar-close" id="sidebar-close" title="Close sidebar"><svg width="24" height="24" fill="none"
+            stroke="currentColor" stroke-width="2">
             <path d="M18 6L6 18M6 6l12 12" />
           </svg></button>
       </div>
@@ -99,7 +108,7 @@
           </div>
 
           <div class="navbar-right">
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode" title="Toggle Theme">
               <svg class="sun-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="5"></circle>
@@ -141,8 +150,8 @@
         </div>
       </nav>
 
-      <section class="category-hero" style="background: linear-gradient(135deg, #1d1d1f 0%, #3d3d3f 100%);">
-        <div class="container">
+      <section class="category-hero" id="hero-3d">
+        <div class="container animate-fade-in-up">
           <h1>macOS</h1>
           <p>Premium software designed for Mac. Productivity apps, creative tools, and utilities for Apple users.</p>
         </div>
@@ -150,7 +159,7 @@
 
       <section class="section">
         <div class="container">
-          <div class="stats-grid">
+          <div class="stats-grid stagger-reveal">
             <div class="stat-card">
               <div class="stat-number">300+</div>
               <div class="stat-label">Mac Apps</div>
@@ -174,7 +183,7 @@
       <section class="section">
         <div class="container">
           <h2 class="section-title mb-4">Browse by Category</h2>
-          <div class="category-cards">
+          <div class="category-cards stagger-reveal">
             <a href="browsers.html" class="category-card">
               <div class="category-card-icon"><svg viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
@@ -225,33 +234,33 @@
       <section class="section">
         <div class="container">
           <h2 class="section-title mb-4">Popular Mac Apps</h2>
-          <div class="apps-grid">
-            <a href="https://www.apple.com/safari/" target="_blank" class="app-card">
+          <div class="apps-grid stagger-reveal delay-300">
+            <a href="https://www.apple.com/safari/" target="_blank" rel="noopener" rel="noopener" class="app-card">
               <div class="app-card-icon"><img src="../assets/icons/safari.svg" alt="Safari"></div>
               <div class="app-card-name">Safari</div>
               <div class="app-card-desc">Apple browser</div>
             </a>
-            <a href="https://www.mozilla.org/firefox/" target="_blank" class="app-card">
+            <a href="https://www.mozilla.org/firefox/" target="_blank" rel="noopener" rel="noopener" class="app-card">
               <div class="app-card-icon"><img src="../assets/icons/firefox.svg" alt="Firefox"></div>
               <div class="app-card-name">Firefox</div>
               <div class="app-card-desc">Web browser</div>
             </a>
-            <a href="https://slack.com/" target="_blank" class="app-card">
+            <a href="https://slack.com/" target="_blank" rel="noopener" rel="noopener" class="app-card">
               <div class="app-card-icon"><img src="../assets/icons/slack.svg" alt="Slack"></div>
               <div class="app-card-name">Slack</div>
               <div class="app-card-desc">Team chat</div>
             </a>
-            <a href="https://www.spotify.com/" target="_blank" class="app-card">
+            <a href="https://www.spotify.com/" target="_blank" rel="noopener" class="app-card">
               <div class="app-card-icon"><img src="../assets/icons/spotify.svg" alt="Spotify"></div>
               <div class="app-card-name">Spotify</div>
               <div class="app-card-desc">Music streaming</div>
             </a>
-            <a href="https://www.videolan.org/vlc/" target="_blank" class="app-card">
+            <a href="https://www.videolan.org/vlc/" target="_blank" rel="noopener" class="app-card">
               <div class="app-card-icon"><img src="../assets/icons/vlc.svg" alt="VLC"></div>
               <div class="app-card-name">VLC</div>
               <div class="app-card-desc">Media player</div>
             </a>
-            <a href="https://zoom.us/" target="_blank" class="app-card">
+            <a href="https://zoom.us/" target="_blank" rel="noopener" class="app-card">
               <div class="app-card-icon"><img src="../assets/icons/zoom.svg" alt="Zoom"></div>
               <div class="app-card-name">Zoom</div>
               <div class="app-card-desc">Video meetings</div>
@@ -339,6 +348,7 @@
   </div>
   <script src="../js/config.js"></script>
   <script src="../js/main.js"></script>
+  <script src="../js/background-3d.js"></script>
 </body>
 
 </html>

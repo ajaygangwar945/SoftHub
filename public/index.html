@@ -6,7 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
     content="SoftHub - Your ultimate destination for software downloads. Browse apps for Windows, macOS, and Android.">
-  <title>SoftHub - Your Ultimate Software Download Hub</title>
+  <title>SoftHub</title>
+
+  <!-- Theme Initialization -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme || systemTheme);
+    })();
+  </script>
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -166,7 +175,7 @@
 
 
           <div class="navbar-right">
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode" title="Toggle Theme">
               <svg class="sun-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="5"></circle>
@@ -209,8 +218,8 @@
       </nav>
 
       <!-- Hero Section -->
-      <section class="hero">
-        <div class="container hero-content">
+      <section class="hero" id="hero-3d">
+        <div class="container hero-content animate-fade-in-up">
           <h1 class="hero-title">
             Ultimate Hub for <span class="highlight" id="typed-text"></span>
           </h1>
@@ -226,7 +235,7 @@
           <div class="section-header">
             <h2 class="section-title">Trending Categories</h2>
           </div>
-          <div class="trending-grid">
+          <div class="trending-grid stagger-reveal">
             <a href="categories/browsers.html" class="trending-card">
               <div class="trending-icon">
                 <svg viewBox="0 0 24 24" fill="currentColor">
@@ -498,9 +507,9 @@
               </svg>
             </a>
           </div>
-          <div class="games-grid">
+          <div class="games-grid stagger-reveal">
             <a href="#" class="game-card">
-              <img src="assets/images/games/pubg.jpg" alt="PUBG">
+              <img src="assets/images/games/pubg.png" alt="PUBG">
               <div class="game-card-overlay">
                 <div class="game-card-title">PUBG</div>
                 <div class="game-card-rating">
@@ -513,7 +522,7 @@
               </div>
             </a>
             <a href="#" class="game-card">
-              <img src="assets/images/games/gta.jpg" alt="GTA V">
+              <img src="assets/images/games/gta.png" alt="GTA V">
               <div class="game-card-overlay">
                 <div class="game-card-title">GTA V</div>
                 <div class="game-card-rating">
@@ -526,7 +535,7 @@
               </div>
             </a>
             <a href="#" class="game-card">
-              <img src="assets/images/games/freefire.jpg" alt="Free Fire">
+              <img src="assets/images/games/freefire.png" alt="Free Fire">
               <div class="game-card-overlay">
                 <div class="game-card-title">Free Fire</div>
                 <div class="game-card-rating">
@@ -539,7 +548,7 @@
               </div>
             </a>
             <a href="#" class="game-card">
-              <img src="assets/images/games/fortnite.jpg" alt="Fortnite">
+              <img src="assets/images/games/fortnite.png" alt="Fortnite">
               <div class="game-card-overlay">
                 <div class="game-card-title">Fortnite</div>
                 <div class="game-card-rating">
@@ -552,7 +561,7 @@
               </div>
             </a>
             <a href="#" class="game-card">
-              <img src="assets/images/games/minecraft.jpg" alt="Minecraft">
+              <img src="assets/images/games/minecraft.png" alt="Minecraft">
               <div class="game-card-overlay">
                 <div class="game-card-title">Minecraft</div>
                 <div class="game-card-rating">
@@ -565,7 +574,7 @@
               </div>
             </a>
             <a href="#" class="game-card">
-              <img src="assets/images/games/cod.jpg" alt="Call of Duty">
+              <img src="assets/images/games/cod.png" alt="Call of Duty">
               <div class="game-card-overlay">
                 <div class="game-card-title">Call of Duty</div>
                 <div class="game-card-rating">
@@ -594,7 +603,7 @@
               </svg>
             </a>
           </div>
-          <div class="apps-scroll">
+          <div class="apps-scroll stagger-reveal">
             <a href="#" class="app-card">
               <div class="app-card-icon">
                 <img src="assets/icons/whatsapp.svg" alt="WhatsApp">
@@ -722,6 +731,7 @@
   <!-- Scripts -->
   <script src="js/config.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/background-3d.js"></script>
 </body>
 
 </html>

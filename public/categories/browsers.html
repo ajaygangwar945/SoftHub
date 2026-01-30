@@ -6,6 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Browsers - SoftHub</title>
 
+  <!-- Theme Initialization -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme || systemTheme);
+    })();
+  </script>
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 
@@ -122,7 +131,7 @@
 
 
           <div class="navbar-right">
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode" title="Toggle Theme">
               <svg class="sun-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="5"></circle>
@@ -165,8 +174,8 @@
       </nav>
 
       <!-- Category Hero -->
-      <section class="category-hero">
-        <div class="container">
+      <section class="category-hero" id="hero-3d">
+        <div class="container animate-fade-in-up">
           <h1>Browsers</h1>
           <p>Browse the web faster, safer, and more privately. Choose from top browsers for all platforms.</p>
         </div>
@@ -175,7 +184,7 @@
       <!-- Apps Section -->
       <section class="section">
         <div class="container">
-          <div class="filter-bar">
+          <div class="filter-bar animate-fade-in-up delay-300">
             <button class="filter-btn active">All</button>
             <button class="filter-btn">Popular</button>
             <button class="filter-btn">Privacy</button>
@@ -183,7 +192,7 @@
             <button class="filter-btn">Developer</button>
           </div>
 
-          <div class="apps-grid">
+          <div class="apps-grid stagger-reveal">
             <a href="https://www.google.com/chrome/" target="_blank" rel="noopener" class="app-card">
               <div class="app-card-icon">
                 <img src="../assets/icons/chrome.svg" alt="Chrome">
@@ -371,6 +380,7 @@
       });
     });
   </script>
+  <script src="../js/background-3d.js"></script>
 </body>
 
 </html>

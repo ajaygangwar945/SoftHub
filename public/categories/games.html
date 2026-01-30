@@ -5,6 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Games - SoftHub</title>
+
+  <!-- Theme Initialization -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme || systemTheme);
+    })();
+  </script>
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,8 +29,8 @@
         <a href="#" class="logo">
           <div class="logo-icon">S</div><span>SoftHub</span>
         </a>
-        <button class="sidebar-close" id="sidebar-close"><svg width="24" height="24" fill="none" stroke="currentColor"
-            stroke-width="2">
+        <button class="sidebar-close" id="sidebar-close" title="Close sidebar"><svg width="24" height="24" fill="none"
+            stroke="currentColor" stroke-width="2">
             <path d="M18 6L6 18M6 6l12 12" />
           </svg></button>
       </div>
@@ -99,7 +108,7 @@
           </div>
 
           <div class="navbar-right">
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode" title="Toggle Theme">
               <svg class="sun-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="5"></circle>
@@ -141,8 +150,8 @@
         </div>
       </nav>
 
-      <section class="category-hero" style="background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);">
-        <div class="container">
+      <section class="category-hero" id="hero-3d">
+        <div class="container animate-fade-in-up">
           <h1>Games</h1>
           <p>Download the best PC games, mobile games, and gaming platforms for endless entertainment.</p>
         </div>
@@ -213,13 +222,13 @@
       <section class="section">
         <div class="container">
           <h2 class="section-title mb-4">Gaming Platforms</h2>
-          <div class="apps-grid">
-            <a href="https://store.steampowered.com/" target="_blank" class="app-card">
+          <div class="apps-grid stagger-reveal">
+            <a href="https://store.steampowered.com/" target="_blank" rel="noopener" class="app-card">
               <div class="app-card-icon"><img src="../assets/icons/steam.svg" alt="Steam"></div>
               <div class="app-card-name">Steam</div>
               <div class="app-card-desc">PC gaming platform</div>
             </a>
-            <a href="https://www.epicgames.com/store" target="_blank" class="app-card">
+            <a href="https://www.epicgames.com/store" target="_blank" rel="noopener" class="app-card">
               <div class="app-card-icon"><img src="../assets/icons/epic.svg" alt="Epic Games"></div>
               <div class="app-card-name">Epic Games</div>
               <div class="app-card-desc">Free games weekly</div>
@@ -317,6 +326,7 @@
   </div>
   <script src="../js/config.js"></script>
   <script src="../js/main.js"></script>
+  <script src="../js/background-3d.js"></script>
 </body>
 
 </html>

@@ -20,8 +20,8 @@
         <a href="#" class="logo">
           <div class="logo-icon">S</div><span>SoftHub</span>
         </a>
-        <button class="sidebar-close" id="sidebar-close"><svg width="24" height="24" fill="none" stroke="currentColor"
-            stroke-width="2">
+        <button class="sidebar-close" id="sidebar-close" title="Close sidebar"><svg width="24" height="24" fill="none"
+            stroke="currentColor" stroke-width="2">
             <path d="M18 6L6 18M6 6l12 12" />
           </svg></button>
       </div>
@@ -99,7 +99,7 @@
           </div>
 
           <div class="navbar-right">
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode" title="Toggle Theme">
               <svg class="sun-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="5"></circle>
@@ -141,8 +141,8 @@
         </div>
       </nav>
 
-      <section class="category-hero" style="background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);">
-        <div class="container">
+      <section class="category-hero" id="hero-3d">
+        <div class="container animate-fade-in-up">
           <h1>Video</h1>
           <p>Video players, editors, converters, and streaming tools for all your video needs.</p>
         </div>
@@ -150,44 +150,44 @@
 
       <section class="section">
         <div class="container">
-          <div class="apps-grid">
-            <a href="https://www.videolan.org/vlc/" target="_blank" rel="noopener" class="app-card">
+          <div class="apps-grid stagger-reveal">
+            <a href="https://www.videolan.org/vlc/" target="_blank" rel="noopener" rel="noopener" class="app-card">
               <div class="app-card-icon"><img src="../assets/icons/vlc.svg" alt="VLC"></div>
               <div class="app-card-name">VLC</div>
               <div class="app-card-desc">Media player</div>
             </a>
             <a href="https://www.blackmagicdesign.com/products/davinciresolve/" target="_blank" rel="noopener"
-              class="app-card">
+              rel="noopener" class="app-card">
               <div class="app-card-icon"><img src="../assets/icons/davinci.svg" alt="DaVinci Resolve"></div>
               <div class="app-card-name">DaVinci Resolve</div>
               <div class="app-card-desc">Pro video editor</div>
             </a>
-            <a href="https://obsproject.com/" target="_blank" rel="noopener" class="app-card">
+            <a href="https://obsproject.com/" target="_blank" rel="noopener" rel="noopener" class="app-card">
               <div class="app-card-icon"><img src="../assets/icons/obs.svg" alt="OBS Studio"></div>
               <div class="app-card-name">OBS Studio</div>
               <div class="app-card-desc">Live streaming</div>
             </a>
-            <a href="https://handbrake.fr/" target="_blank" rel="noopener" class="app-card">
+            <a href="https://handbrake.fr/" target="_blank" rel="noopener" rel="noopener" class="app-card">
               <div class="app-card-icon"><img src="../assets/icons/handbrake.svg" alt="HandBrake"></div>
               <div class="app-card-name">HandBrake</div>
               <div class="app-card-desc">Video converter</div>
             </a>
-            <a href="https://shotcut.org/" target="_blank" rel="noopener" class="app-card">
+            <a href="https://shotcut.org/" target="_blank" rel="noopener" rel="noopener" class="app-card">
               <div class="app-card-icon"><img src="../assets/icons/shotcut.svg" alt="Shotcut"></div>
               <div class="app-card-name">Shotcut</div>
               <div class="app-card-desc">Free video editor</div>
             </a>
-            <a href="https://www.capcut.com/" target="_blank" rel="noopener" class="app-card">
+            <a href="https://www.capcut.com/" target="_blank" rel="noopener" rel="noopener" class="app-card">
               <div class="app-card-icon"><img src="../assets/icons/capcut.svg" alt="CapCut"></div>
               <div class="app-card-name">CapCut</div>
               <div class="app-card-desc">Easy video editing</div>
             </a>
-            <a href="https://www.potplayer.daum.net/" target="_blank" rel="noopener" class="app-card">
+            <a href="https://www.potplayer.daum.net/" target="_blank" rel="noopener" rel="noopener" class="app-card">
               <div class="app-card-icon"><img src="../assets/icons/potplayer.svg" alt="PotPlayer"></div>
               <div class="app-card-name">PotPlayer</div>
               <div class="app-card-desc">Multimedia player</div>
             </a>
-            <a href="https://www.openshot.org/" target="_blank" rel="noopener" class="app-card">
+            <a href="https://www.openshot.org/" target="_blank" rel="noopener" rel="noopener" class="app-card">
               <div class="app-card-icon"><img src="../assets/icons/openshot.svg" alt="OpenShot"></div>
               <div class="app-card-name">OpenShot</div>
               <div class="app-card-desc">Video editor</div>
@@ -273,6 +273,7 @@
   </div>
   <script src="../js/config.js"></script>
   <script src="../js/main.js"></script>
+  <script src="../js/background-3d.js"></script>
 </body>
 
 </html>

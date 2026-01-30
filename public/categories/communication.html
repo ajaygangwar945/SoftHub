@@ -20,8 +20,8 @@
         <a href="#" class="logo">
           <div class="logo-icon">S</div><span>SoftHub</span>
         </a>
-        <button class="sidebar-close" id="sidebar-close"><svg width="24" height="24" fill="none" stroke="currentColor"
-            stroke-width="2">
+        <button class="sidebar-close" id="sidebar-close" title="Close sidebar"><svg width="24" height="24" fill="none"
+            stroke="currentColor" stroke-width="2">
             <path d="M18 6L6 18M6 6l12 12" />
           </svg></button>
       </div>
@@ -99,7 +99,7 @@
           </div>
 
           <div class="navbar-right">
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode" title="Toggle Theme">
               <svg class="sun-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="5"></circle>
@@ -141,8 +141,8 @@
         </div>
       </nav>
 
-      <section class="category-hero" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
-        <div class="container">
+      <section class="category-hero" id="hero-3d">
+        <div class="container animate-fade-in-up">
           <h1>Communication</h1>
           <p>Stay connected with friends, family, and colleagues. Messaging, video calls, and collaboration tools.</p>
         </div>
@@ -150,7 +150,7 @@
 
       <section class="section">
         <div class="container">
-          <div class="apps-grid">
+          <div class="apps-grid stagger-reveal">
             <a href="https://www.whatsapp.com/download" target="_blank" rel="noopener" class="app-card">
               <div class="app-card-icon"><img src="../assets/icons/whatsapp.svg" alt="WhatsApp"></div>
               <div class="app-card-name">WhatsApp</div>
@@ -272,6 +272,7 @@
   </div>
   <script src="../js/config.js"></script>
   <script src="../js/main.js"></script>
+  <script src="../js/background-3d.js"></script>
 </body>
 
 </html>

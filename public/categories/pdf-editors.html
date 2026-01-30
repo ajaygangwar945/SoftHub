@@ -20,8 +20,8 @@
         <a href="#" class="logo">
           <div class="logo-icon">S</div><span>SoftHub</span>
         </a>
-        <button class="sidebar-close" id="sidebar-close"><svg width="24" height="24" fill="none" stroke="currentColor"
-            stroke-width="2">
+        <button class="sidebar-close" id="sidebar-close" title="Close sidebar"><svg width="24" height="24" fill="none"
+            stroke="currentColor" stroke-width="2">
             <path d="M18 6L6 18M6 6l12 12" />
           </svg></button>
       </div>
@@ -99,7 +99,7 @@
           </div>
 
           <div class="navbar-right">
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode" title="Toggle Theme">
               <svg class="sun-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="5"></circle>
@@ -141,8 +141,8 @@
         </div>
       </nav>
 
-      <section class="category-hero" style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);">
-        <div class="container">
+      <section class="category-hero" id="hero-3d">
+        <div class="container animate-fade-in-up">
           <h1>PDF Editors</h1>
           <p>Create, edit, convert, and manage PDF documents with powerful PDF software.</p>
         </div>
@@ -150,44 +150,44 @@
 
       <section class="section">
         <div class="container">
-          <div class="apps-grid">
-            <a href="https://www.adobe.com/acrobat" target="_blank" rel="noopener" class="app-card">
+          <div class="apps-grid stagger-reveal">
+            <a href="https://www.adobe.com/acrobat" target="_blank" rel="noopener" rel="noopener" class="app-card">
               <div class="app-card-icon"><img src="../assets/icons/acrobat.svg" alt="Adobe Acrobat"></div>
               <div class="app-card-name">Adobe Acrobat</div>
               <div class="app-card-desc">Industry standard</div>
             </a>
-            <a href="https://www.foxit.com/pdf-editor/" target="_blank" rel="noopener" class="app-card">
+            <a href="https://www.foxit.com/pdf-editor/" target="_blank" rel="noopener" rel="noopener" class="app-card">
               <div class="app-card-icon"><img src="../assets/icons/foxit.svg" alt="Foxit PDF"></div>
               <div class="app-card-name">Foxit PDF</div>
               <div class="app-card-desc">Fast & lightweight</div>
             </a>
-            <a href="https://www.sejda.com/" target="_blank" rel="noopener" class="app-card">
+            <a href="https://www.sejda.com/" target="_blank" rel="noopener" rel="noopener" class="app-card">
               <div class="app-card-icon"><img src="../assets/icons/sejda.svg" alt="Sejda"></div>
               <div class="app-card-name">Sejda</div>
               <div class="app-card-desc">Online & desktop</div>
             </a>
-            <a href="https://smallpdf.com/" target="_blank" rel="noopener" class="app-card">
+            <a href="https://smallpdf.com/" target="_blank" rel="noopener" rel="noopener" class="app-card">
               <div class="app-card-icon"><img src="../assets/icons/smallpdf.svg" alt="Smallpdf"></div>
               <div class="app-card-name">Smallpdf</div>
               <div class="app-card-desc">Easy PDF tools</div>
             </a>
-            <a href="https://www.sumatrapdfreader.org/" target="_blank" rel="noopener" class="app-card">
+            <a href="https://www.sumatrapdfreader.org/" target="_blank" rel="noopener" rel="noopener" class="app-card">
               <div class="app-card-icon"><img src="../assets/icons/sumatra.svg" alt="Sumatra PDF"></div>
               <div class="app-card-name">Sumatra PDF</div>
               <div class="app-card-desc">Fast reader</div>
             </a>
-            <a href="https://www.pdfsam.org/" target="_blank" rel="noopener" class="app-card">
+            <a href="https://www.pdfsam.org/" target="_blank" rel="noopener" rel="noopener" class="app-card">
               <div class="app-card-icon"><img src="../assets/icons/pdfsam.svg" alt="PDFsam"></div>
               <div class="app-card-name">PDFsam</div>
               <div class="app-card-desc">Split & merge</div>
             </a>
-            <a href="https://pdf.wondershare.com/" target="_blank" rel="noopener" class="app-card">
+            <a href="https://pdf.wondershare.com/" target="_blank" rel="noopener" rel="noopener" class="app-card">
               <div class="app-card-icon"><img src="../assets/icons/pdfelement.svg" alt="PDFelement"></div>
               <div class="app-card-name">PDFelement</div>
               <div class="app-card-desc">All-in-one editor</div>
             </a>
             <a href="https://www.tracker-software.com/product/pdf-xchange-editor" target="_blank" rel="noopener"
-              class="app-card">
+              rel="noopener" class="app-card">
               <div class="app-card-icon"><img src="../assets/icons/pdfxchange.svg" alt="PDF-XChange"></div>
               <div class="app-card-name">PDF-XChange</div>
               <div class="app-card-desc">Feature-rich editor</div>
@@ -273,6 +273,7 @@
   </div>
   <script src="../js/config.js"></script>
   <script src="../js/main.js"></script>
+  <script src="../js/background-3d.js"></script>
 </body>
 
 </html>

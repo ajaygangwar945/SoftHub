@@ -7,7 +7,99 @@ document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initTypedAnimation();
   initSearch();
+  initAuthUI();
 });
+
+/**
+ * Initialize Auth UI
+ * Updates navbar and sidebar based on user login state
+ */
+function initAuthUI() {
+  const userStr = localStorage.getItem('user');
+  const user = userStr ? JSON.parse(userStr) : null;
+
+  updateNavbarAuth(user);
+  updateSidebarAuth(user);
+}
+
+function updateNavbarAuth(user) {
+  const navbarRight = document.querySelector('.navbar-right');
+  if (!navbarRight) return;
+
+  const signInBtn = navbarRight.querySelector('.btn-primary');
+
+  if (user) {
+    if (signInBtn) signInBtn.remove();
+
+    // Check if user info already exists to avoid duplicates
+    const existingUserInfo = navbarRight.querySelector('.user-info');
+    if (existingUserInfo) existingUserInfo.remove();
+
+    const userInfo = document.createElement('div');
+    userInfo.className = 'user-info';
+    userInfo.style.display = 'flex';
+    userInfo.style.alignItems = 'center';
+    userInfo.style.gap = '1rem';
+
+    userInfo.innerHTML = `
+      <span style="font-weight: 500; font-size: 0.9rem;">${user.name}</span>
+      <button onclick="logout()" class="btn btn-primary btn-sm" style="padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.8rem;">
+        Log Out
+      </button>
+    `;
+
+    navbarRight.appendChild(userInfo);
+  } else {
+    // Ensure Sign In button exists if not logged in
+    const existingUserInfo = navbarRight.querySelector('.user-info');
+    if (existingUserInfo) {
+      existingUserInfo.remove();
+
+      if (!signInBtn) {
+        const btn = document.createElement('a');
+        btn.href = 'auth/login.html';
+        btn.className = 'btn btn-primary';
+        btn.textContent = 'Sign In';
+        navbarRight.appendChild(btn);
+      }
+    }
+  }
+}
+
+function updateSidebarAuth(user) {
+  const sidebarUser = document.querySelector('.sidebar-user');
+  if (!sidebarUser) return;
+
+  const infoContainer = sidebarUser.querySelector('.sidebar-user-info');
+  const title = infoContainer.querySelector('h4');
+  const subtitle = infoContainer.querySelector('p');
+
+  if (user) {
+    // Show only username, no logout action in sidebar as requested
+    sidebarUser.href = '#';
+    sidebarUser.onclick = (e) => e.preventDefault();
+
+    title.textContent = user.name;
+    subtitle.textContent = 'Welcome back'; // Neutral text
+  } else {
+    sidebarUser.href = 'auth/login.html';
+    sidebarUser.onclick = null;
+
+    title.textContent = 'Sign In';
+    subtitle.textContent = 'Access your account';
+  }
+}
+
+function logout() {
+  localStorage.removeItem('user');
+  showToast('Logging out...', 'info');
+  setTimeout(() => {
+    window.location.reload();
+  }, 1000);
+}
+
+// Make logout globally available
+window.logout = logout;
 
 /**
  * Sidebar functionality
@@ -112,8 +204,8 @@ function showToast(message, type = 'info') {
     bottom: 20px;
     right: 20px;
     padding: 1rem 1.5rem;
-    background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#6366f1'};
-    color: white;
+    background: ${type === 'success' ? 'var(--secondary)' : type === 'error' ? 'var(--accent)' : 'var(--primary)'};
+    color: var(--text-inverse);
     border-radius: 0.5rem;
     font-weight: 500;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -155,10 +247,8 @@ function initTheme() {
   const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   const currentTheme = savedTheme || systemTheme;
 
-  // Apply initial theme
-  if (currentTheme === 'dark') {
-    html.setAttribute('data-theme', 'dark');
-  }
+  // Apply initial theme - Always set attribute to resolve CSS selector issues
+  html.setAttribute('data-theme', currentTheme);
 
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
