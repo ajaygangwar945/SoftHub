@@ -211,6 +211,10 @@ select {
   flex: 1;
   margin-left: var(--sidebar-width);
   transition: margin-left var(--transition-slow);
+  width: 100%;
+  /* Ensure proper width */
+  min-width: 0;
+  /* Crucial for preventing flex item overflow */
 }
 
 @media (max-width: 1024px) {
@@ -723,6 +727,14 @@ select {
   backdrop-filter: blur(4px);
   padding: 0.25rem 1rem;
   border-radius: var(--radius-md);
+}
+
+@media (max-width: 640px) {
+  .hero-title .highlight {
+    min-width: auto;
+    display: inline;
+    padding: 0.25rem 0.5rem;
+  }
 }
 
 .hero-subtitle {
@@ -1290,12 +1302,17 @@ select {
 
 @media (max-width: 576px) {
   .footer-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 columns for links */
     text-align: center;
+    gap: 1.5rem;
   }
 
   .footer-brand {
     max-width: 100%;
+    grid-column: 1 / -1;
+    /* Brand takes full width */
+    margin-bottom: 0.5rem;
   }
 
   .footer-column h4::after {
@@ -1305,7 +1322,7 @@ select {
 
   /* Improve vertical spacing in mobile footer */
   .footer-column {
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
   }
 
   .footer-grid {
