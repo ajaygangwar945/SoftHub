@@ -74,13 +74,33 @@ function updateSidebarAuth(user) {
   const title = infoContainer.querySelector('h4');
   const subtitle = infoContainer.querySelector('p');
 
+  // Remove any existing logout button
+  const existingLogout = document.querySelector('.sidebar-logout');
+  if (existingLogout) existingLogout.remove();
+
   if (user) {
-    // Show only username, no logout action in sidebar as requested
+    // Show username
     sidebarUser.href = '#';
     sidebarUser.onclick = (e) => e.preventDefault();
 
     title.textContent = user.name;
-    subtitle.textContent = 'Welcome back'; // Neutral text
+    subtitle.textContent = 'Welcome back';
+
+    // Add logout button after user section
+    const logoutBtn = document.createElement('button');
+    logoutBtn.className = 'sidebar-logout';
+    logoutBtn.innerHTML = `
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+        <polyline points="16 17 21 12 16 7"></polyline>
+        <line x1="21" y1="12" x2="9" y2="12"></line>
+      </svg>
+      <span>Log Out</span>
+    `;
+    logoutBtn.onclick = logout;
+
+    // Insert after sidebar-user
+    sidebarUser.parentNode.insertBefore(logoutBtn, sidebarUser.nextSibling);
   } else {
     sidebarUser.href = 'auth/login.html';
     sidebarUser.onclick = null;

@@ -1,4 +1,4 @@
-![SoftHub Banner](public/assets/images/banner_placeholder.svg)
+<img align="center" src="public/assets/images/banner_placeholder.svg" width="100%" height="200" style="object-fit: cover">
 
 <h1 align="center">🚀 SoftHub</h1>
 

@@ -627,6 +627,33 @@ select {
   flex-shrink: 0;
 }
 
+/* Sidebar Logout Button */
+.sidebar-logout {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: calc(100% - 1.5rem);
+  margin: 0.5rem 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.sidebar-logout:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.sidebar-logout svg {
+  flex-shrink: 0;
+}
+
 /* Overlay */
 .sidebar-overlay {
   display: none;
