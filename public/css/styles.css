@@ -710,7 +710,7 @@ select {
 }
 
 .hero-title {
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(1.75rem, 5vw, 3.5rem);
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 1rem;
@@ -781,7 +781,7 @@ select {
 
 .trending-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1rem;
 }
 
@@ -1057,8 +1057,8 @@ select {
 
 .games-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
 }
 
 .game-card {
@@ -1301,6 +1301,16 @@ select {
   .footer-column h4::after {
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  /* Improve vertical spacing in mobile footer */
+  .footer-column {
+    margin-bottom: 2rem;
+  }
+
+  .footer-grid {
+    gap: 1rem;
+    margin-bottom: 2rem;
   }
 
   .footer-social {
