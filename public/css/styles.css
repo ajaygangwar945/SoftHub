@@ -383,8 +383,11 @@ select {
 }
 
 @media (max-width: 640px) {
-  .platform-links {
+
+  .platform-links,
+  .navbar-right .btn {
     display: none;
+    /* Hide Platform links AND Sign In button on mobile. Sidebar has Sign In. */
   }
 }
 
@@ -463,6 +466,18 @@ select {
   background: var(--secondary-hover);
 }
 
+/* Button Sizes */
+.btn-lg {
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+}
+
+.w-full {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 /* ============================================
    Sidebar
    ============================================ */
@@ -478,6 +493,16 @@ select {
   z-index: 200;
   overflow-y: auto;
   transition: transform var(--transition-slow);
+}
+
+@media (max-width: 640px) {
+  /* Hide Navbar Sign In logic is usually in Navbar section, but we can add global override or specific here if needed. 
+     Better to place it in proper section, but since I am editing this chunk... */
+
+  /* Actually, let's keep this clean and just add utility classes here 
+     and move the Navbar specific override to the navbar media query section if possible, 
+     or just add it here if I am editing the file sequentially.
+     Ref: Navbar media query is around line 385. I will make a separate edit for that to be clean. */
 }
 
 .sidebar-header {
@@ -915,6 +940,26 @@ select {
 @media (max-width: 768px) {
   .downloads-table .hide-mobile {
     display: none;
+  }
+
+  .downloads-table th,
+  .downloads-table td {
+    padding: 0.75rem 0.5rem;
+    /* Reduced padding */
+  }
+
+  .app-icon {
+    width: 40px;
+    height: 40px;
+    /* Smaller icon */
+  }
+
+  .app-name {
+    font-size: 0.875rem;
+  }
+
+  .app-category {
+    font-size: 0.75rem;
   }
 }
 
