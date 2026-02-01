@@ -219,6 +219,17 @@ select {
   }
 }
 
+@media (max-width: 640px) {
+  :root {
+    --container-max: 100%;
+    --nav-height: 64px;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+}
+
 /* ============================================
    Navigation Bar
    ============================================ */
@@ -617,6 +628,18 @@ select {
   transition: background var(--transition-slow);
 }
 
+@media (max-width: 640px) {
+  .hero {
+    padding: 2rem 0;
+    margin: 1rem;
+    border-radius: var(--radius-xl);
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+}
+
 .hero::before {
   content: '';
   position: absolute;
@@ -662,6 +685,12 @@ select {
 
 .section {
   padding: 3rem 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 2rem 1rem;
+  }
 }
 
 .section-header {
@@ -762,6 +791,8 @@ select {
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .downloads-table {
@@ -1220,6 +1251,18 @@ select {
   padding: 2rem;
   width: 100%;
 }
+
+@media (max-width: 640px) {
+  .auth-page {
+    padding: 1rem;
+    align-items: flex-start;
+  }
+
+  .auth-card {
+    margin-top: 2rem;
+  }
+}
+
 
 .auth-card {
   width: 100%;

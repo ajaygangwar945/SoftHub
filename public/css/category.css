@@ -9,6 +9,14 @@
   transition: background var(--transition-slow);
 }
 
+@media (max-width: 640px) {
+  .category-hero {
+    padding: 2rem 1rem;
+    margin: 1rem;
+    border-radius: var(--radius-xl);
+  }
+}
+
 .category-hero::before {
   content: '';
   position: absolute;
