@@ -1323,6 +1323,9 @@ select {
   justify-content: center;
   padding: 2rem;
   width: 100%;
+  position: relative;
+  z-index: 10;
+  /* Ensure on top of 3D background */
 }
 
 @media (max-width: 640px) {
