@@ -71,19 +71,31 @@ SoftHub/
 ├── public/                 # Static frontend files
 │   ├── index.html          # Main page
 │   ├── css/
-│   │   └── styles.css      # Global styles
+│   │   ├── styles.css      # Global styles
+│   │   └── category.css    # Category-specific styles
 │   ├── js/
 │   │   ├── config.js       # API configuration
-│   │   └── main.js         # Main JavaScript
+│   │   ├── main.js         # Main JavaScript
+│   │   └── background-3d.js # Vanta.js background effect
 │   ├── auth/               # Authentication pages
 │   │   ├── login.html
 │   │   ├── register.html
 │   │   └── forgot-password.html
 │   ├── categories/         # Category pages
-│   │   └── browsers.html
+│   │   ├── android.html
+│   │   ├── antivirus.html
+│   │   ├── browsers.html
+│   │   ├── communication.html
+│   │   ├── games.html
+│   │   ├── macos.html
+│   │   ├── music.html
+│   │   ├── pdf-editors.html
+│   │   ├── utilities.html
+│   │   ├── video.html
+│   │   └── windows.html
 │   └── assets/             # Images and icons
-│       ├── icons/
-│       └── images/
+│       ├── icons/          # SVG icons for apps
+│       └── images/         # Game covers and banners
 ├── src/                    # Backend source
 │   ├── models/
 │   │   └── User.js         # User model
@@ -96,6 +108,26 @@ SoftHub/
 ├── render.yaml
 └── README.md
 ```
+
+---
+
+## 🔧 Troubleshooting
+
+### Deployment Issues
+
+#### MongoDB Connection Error (Render)
+
+If you see `MongooseServerSelectionError` in your Render logs, it is likely due to IP whitelisting.
+
+- **Solution:** Go to your MongoDB Atlas Dashboard > Network Access > Add IP Address > Select **"Allow Access From Anywhere"** (`0.0.0.0/0`).
+- Render uses dynamic IPs, so whitelisting a single IP will not work.
+
+#### Login Not Working
+
+If the login API returns errors or timeouts:
+
+- Ensure all **Environment Variables** (`MONGODB_URI`, `JWT_SECRET`) are correctly set in the Render Dashboard.
+- Verify your database connection string is correct.
 
 ---
 
