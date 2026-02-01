@@ -1,3 +1,5 @@
+![SoftHub Banner](public/assets/images/banner_placeholder.svg)
+
 <h1 align="center">🚀 SoftHub</h1>
 
 <div align="center">
@@ -25,12 +27,12 @@ The application integrates <b>MongoDB</b> for persistent data storage and follow
 
 ---
 
-## 🔗 Live Demo
+## 🔗  View Live Site
 
 <p align="left">
   <strong>👉 Visit SoftHub :</strong><br><br>
   <a href="https://softhub-bwnd.onrender.com">
-    <img src="https://img.shields.io/badge/Render-Live%20Server-46E3B7?style=for-the-badge&logo=render&logoColor=white"/>
+    <img src="https://img.shields.io/badge/SoftHub-Live-6366f1?style=for-the-badge&logo=render&logoColor=white"/>
   </a>
 </p>
 
@@ -38,12 +40,13 @@ The application integrates <b>MongoDB</b> for persistent data storage and follow
 
 ## Features
 
-- **Modern UI** - Clean, responsive design with glassmorphism effects
-- **Multi-Platform** - Browse software for Windows, macOS, and Android
-- **Categories** - Organized sections for Browsers, Communication, Games, PDF Editors, and more
-- **User Authentication** - Secure sign-in with email/password and OTP-based password reset
-- **Search** - Find software quickly with integrated search
-- **Responsive** - Works beautifully on desktop and mobile devices
+- **Modern UI** - Clean, responsive design with glassmorphism effects and 3D animations.
+- **Fully Responsive** - Optimized for all devices including mobiles, tablets, and desktops.
+- **Multi-Platform** - Browse software for Windows, macOS, and Android.
+- **Categories** - Organized sections for Browsers, Communication, Games, PDF Editors, and more.
+- **User Authentication** - Secure sign-in with email/password and OTP-based password reset.
+- **Search** - Find software quickly with integrated search functionality.
+- **Dark/Light Mode** - Automatic theme detection with manual toggle.
 
 ---
 

@@ -626,6 +626,34 @@ select {
   position: relative;
   overflow: hidden;
   transition: background var(--transition-slow);
+  z-index: 1;
+  /* Establish stacking context */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  /* Ensure text is above Vanta canvas */
+  pointer-events: none;
+  /* Allow clicks to pass through to Vanta if needed, but usually we want text selection. Let's keep pointer-events auto for text */
+  pointer-events: auto;
+}
+
+/* Force Vanta canvas to stay behind */
+.vanta-canvas {
+  z-index: 1 !important;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 2rem 0;
+    margin: 1rem;
+    border-radius: var(--radius-xl);
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
 }
 
 @media (max-width: 640px) {
