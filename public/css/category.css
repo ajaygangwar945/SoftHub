@@ -7,6 +7,10 @@
   background: transparent !important;
   color: var(--text-primary);
   transition: background var(--transition-slow);
+  position: relative;
+  /* Required for z-index to work */
+  z-index: 1;
+  /* Establish stacking context */
 }
 
 @media (max-width: 640px) {
@@ -28,7 +32,8 @@
 
 .category-hero .container {
   position: relative;
-  z-index: 2;
+  z-index: 10;
+  /* Ensure text is above Vanta canvas */
 }
 
 .category-hero h1 {
