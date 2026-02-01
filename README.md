@@ -256,4 +256,12 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ---
 
-Made with love by the SoftHub Team
+<div align="center">
+
+### 💜 Made with Love
+
+**Built with passion by the SoftHub Team**
+
+⭐ Star this repo if you find it useful! ⭐
+
+</div>
