@@ -123,6 +123,14 @@ npm start
 
 ---
 
+## 🚀 View Live Site
+
+The project is live and accessible online.
+
+[![Live Website](https://img.shields.io/badge/LIVE-VISIT_SITE-6366f1?style=for-the-badge&logo=render&logoColor=white)](https://softhub-bwnd.onrender.com/)
+
+---
+
 ## 🔒 Security Best Practices
 
 - **Environment Isolation**: Sensitive keys are never committed to version control.
