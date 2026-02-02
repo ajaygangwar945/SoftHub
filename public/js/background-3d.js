@@ -1,5 +1,5 @@
 /**
- * SoftHub - 3D Background Logic
+ * SoftHub - Enhanced 3D Background Logic
  * Uses Vanta.js for premium animated backgrounds
  */
 
@@ -17,93 +17,137 @@ function init3DBackground() {
 
     // Determine theme and colors based on page context
     const path = window.location.pathname;
-    let effectType = 'NET';
-    let color = 0x6366f1; // Default Indigo
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
 
-    if (path.includes('windows')) {
+    let effectType = 'WAVES'; // Default
+    let color = 0x6366f1; // Default Indigo (Primary)
+
+    // Effect Logic based on page
+    if (path === '/' || path.endsWith('index.html') || path === '') {
+        effectType = 'HALO';
+        color = 0x6366f1;
+    } else if (path.includes('windows')) {
+        effectType = 'GLOBE';
         color = 0x0078D4;
     } else if (path.includes('macos')) {
-        // macOS uses silver/gray for better visibility
-        color = document.documentElement.getAttribute('data-theme') === 'dark' ? 0xffffff : 0x64748b;
+        effectType = 'GLOBE';
+        color = isDark ? 0xffffff : 0x64748b;
     } else if (path.includes('android')) {
+        effectType = 'GLOBE';
         color = 0x3DDC84;
     } else if (path.includes('games')) {
+        effectType = 'NET';
         color = 0xf59e0b;
     } else if (path.includes('browsers')) {
+        effectType = 'WAVES';
         color = 0x0ea5e9;
     } else if (path.includes('communication')) {
+        effectType = 'WAVES';
         color = 0x10b981;
     } else if (path.includes('antivirus')) {
+        effectType = 'WAVES';
         color = 0xef4444;
     } else if (path.includes('pdf-editors')) {
+        effectType = 'WAVES';
         color = 0xf43f5e;
     } else if (path.includes('utilities')) {
+        effectType = 'FOG';
         color = 0x64748b;
     } else if (path.includes('video')) {
+        effectType = 'WAVES';
         color = 0x8b5cf6;
     } else if (path.includes('music')) {
+        effectType = 'WAVES';
         color = 0xd946ef;
     }
 
     // Detect current theme colors from CSS variables
     const styles = getComputedStyle(document.documentElement);
     const getHexFromVar = (varName) => {
-        const color = styles.getPropertyValue(varName).trim();
-        if (color.startsWith('#')) return parseInt(color.replace('#', '0x'), 16);
-        return backgroundColor; // fallback
+        const c = styles.getPropertyValue(varName).trim();
+        if (c.startsWith('#')) return parseInt(c.replace('#', '0x'), 16);
+        return 0x0f172a; // Default fallback (dark bg)
     };
 
     const finalBgColor = getHexFromVar('--bg-main');
-    const finalPointsColor = color; // Keep points bright
 
-
+    const commonOptions = {
+        el: "#hero-3d",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        backgroundColor: finalBgColor
+    };
 
     try {
-        if (effectType === 'FOG') {
-            vantaEffect = VANTA.FOG({
-                el: "#hero-3d",
-                mouseControls: true,
-                touchControls: true,
-                gyroControls: false,
-                minHeight: 200.00,
-                minWidth: 200.00,
-                highlightColor: color,
-                midtoneColor: finalBgColor,
-                lowlightColor: finalBgColor,
-                baseColor: finalBgColor,
-                blurFactor: 0.60,
-                speed: 1.00,
-                zoom: 1.00
-            });
-        } else if (effectType === 'NET') {
-            vantaEffect = VANTA.NET({
-                el: "#hero-3d",
-                mouseControls: true,
-                touchControls: true,
-                gyroControls: false,
-                minHeight: 200.00,
-                minWidth: 200.00,
-                scale: 1.00,
-                scaleMobile: 1.00,
-                color: color,
-                backgroundColor: finalBgColor,
-                points: 12.00,
-                maxDistance: 22.00,
-                spacing: 15.00
-            });
+        switch (effectType) {
+            case 'HALO':
+                vantaEffect = VANTA.HALO({
+                    ...commonOptions,
+                    size: 1.50,
+                    amplitudeFactor: 1.50,
+                    xOffset: 0.1,
+                    yOffset: 0.1,
+                    baseColor: color
+                });
+                break;
+            case 'GLOBE':
+                vantaEffect = VANTA.GLOBE({
+                    ...commonOptions,
+                    size: 0.90,
+                    color: color,
+                    color2: isDark ? 0x1e293b : 0xe2e8f0
+                });
+                break;
+            case 'NET':
+                vantaEffect = VANTA.NET({
+                    ...commonOptions,
+                    color: color,
+                    points: 16.00,
+                    maxDistance: 24.00,
+                    spacing: 12.00
+                });
+                break;
+            case 'WAVES':
+                vantaEffect = VANTA.WAVES({
+                    ...commonOptions,
+                    color: finalBgColor,
+                    shininess: 30.00,
+                    waveHeight: 15.00,
+                    waveSpeed: 0.80,
+                    zoom: 0.75
+                });
+                // Note: Vanta Waves has slightly different color property behavior
+                if (vantaEffect) vantaEffect.setOptions({ color: color });
+                break;
+            case 'FOG':
+                vantaEffect = VANTA.FOG({
+                    ...commonOptions,
+                    highlightColor: color,
+                    midtoneColor: finalBgColor,
+                    lowlightColor: finalBgColor,
+                    baseColor: finalBgColor,
+                    blurFactor: 0.60
+                });
+                break;
         }
     } catch (err) {
-        console.error('Vanta initialization failed:', err);
+        console.error(`Vanta ${effectType} initialization failed:`, err);
+        // Fallback to NET if specific effect fails
+        if (effectType !== 'NET') {
+            try {
+                vantaEffect = VANTA.NET({ ...commonOptions, color: color });
+            } catch (e) { console.error('Fallback failed:', e); }
+        }
     }
 
-    // ... logic above ...
-
-    // Handle theme changes - prevent duplicate observers
+    // Handle theme changes
     if (!window._themeObserver) {
         window._themeObserver = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
                 if (mutation.attributeName === 'data-theme') {
-                    // Re-initialize for color updates
                     init3DBackground();
                 }
             });
@@ -111,18 +155,13 @@ function init3DBackground() {
         window._themeObserver.observe(document.documentElement, { attributes: true });
     }
 
-    // Cleanup previous resize observer
+    // Handle resize
     if (hero._vantaResizeObserver) {
         hero._vantaResizeObserver.disconnect();
     }
-
-    // Use ResizeObserver for robust responsiveness (sidebar toggles, layout shifts)
     const resizeObserver = new ResizeObserver(() => {
-        if (vantaEffect) {
-            vantaEffect.resize();
-        }
+        if (vantaEffect) vantaEffect.resize();
     });
-
     resizeObserver.observe(hero);
     hero._vantaResizeObserver = resizeObserver;
 }
@@ -132,27 +171,27 @@ function loadVantaDependencies(callback) {
     const scripts = [
         'https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js',
         'https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js',
-        'https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js'
+        'https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js',
+        'https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js',
+        'https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js',
+        'https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.halo.min.js'
     ];
 
-    function loadNext(index) {
-        if (index >= scripts.length) {
-            callback();
-            return;
-        }
-
+    let loaded = 0;
+    scripts.forEach(url => {
         const script = document.createElement('script');
-        script.src = scripts[index];
-        script.onload = () => loadNext(index + 1);
+        script.src = url;
+        script.onload = () => {
+            loaded++;
+            if (loaded === scripts.length) callback();
+        };
         script.onerror = () => {
-            console.error(`Failed to load script: ${scripts[index]}`);
-            // Continue anyway to try loading others or at least not block
-            loadNext(index + 1);
+            console.error(`Failed to load: ${url}`);
+            loaded++;
+            if (loaded === scripts.length) callback();
         };
         document.head.appendChild(script);
-    }
-
-    loadNext(0);
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
