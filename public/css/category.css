@@ -325,4 +325,40 @@
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     gap: 1rem;
   }
+
+  .category-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .category-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .category-card-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 0.5rem;
+  }
+
+  .category-card-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .platform-card {
+    padding: 1.5rem;
+  }
+
+  .platform-card-icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .platform-card-icon svg {
+    width: 36px;
+    height: 36px;
+  }
 }
