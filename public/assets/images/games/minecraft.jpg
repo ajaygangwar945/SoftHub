@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-  <rect width="200" height="200" fill="#5D9B47"/>
-  <rect x="40" y="60" width="30" height="30" fill="#8B5A2B"/>
-  <rect x="80" y="60" width="30" height="30" fill="#8B5A2B"/>
-  <rect x="60" y="90" width="30" height="30" fill="#8B5A2B"/>
-  <rect x="100" y="90" width="30" height="30" fill="#8B5A2B"/>
-  <text x="100" y="160" text-anchor="middle" fill="#fff" font-size="20" font-weight="bold">MINECRAFT</text>
-</svg>

@@ -7,262 +7,135 @@
 ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
 ![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
-![JWT](https://img.shields.io/badge/JWT-Authentication-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
-![Nodemailer](https://img.shields.io/badge/Nodemailer-Email%20OTP-0A66C2?style=for-the-badge&logo=gmail&logoColor=white)
+![Vanta.js](https://img.shields.io/badge/Vanta.js-3D%20Visuals-6366f1?style=for-the-badge&logo=javascript&logoColor=white)
+![Nodemailer](https://img.shields.io/badge/Nodemailer-OTP%20Auth-0A66C2?style=for-the-badge&logo=gmail&logoColor=white)
 ![Render](https://img.shields.io/badge/Render-Deployed-46E3B7?style=for-the-badge&logo=render&logoColor=white)
 
 </div>
 
 ---
 
-## 📖 About
+## 📖 Project Overview
 
-<p align="justify">
-<b>SoftHub</b> is a secure and scalable server-side application built with <b>Node.js</b> and <b>Express.js</b>. It provides RESTful APIs for user authentication, data management, and email-based OTP password recovery.
-</p>
+**SoftHub** is a high-performance, full-stack software distribution platform. It combines a cinematic frontend experience with a robust, secure Node.js backend. Designed for speed and visual excellence, SoftHub provides a seamless way to discover and download apps for Windows, macOS, and Android.
 
-<p align="justify">
-The application integrates <b>MongoDB</b> for persistent data storage and follows industry-standard security practices, including <b>bcrypt password hashing</b>, <b>JWT-based authentication</b>, and secure environment configuration. It is deployed on <b>Render</b> as a production-ready backend service.
-</p>
+> [!IMPORTANT]
+> This version features an overhauled 3D background system and high-resolution high-performing assets for a premium user experience.
 
 ---
 
-## 🔗  View Live Site
+## ✨ Key Features
 
-<p align="left">
-  <strong>👉 Visit SoftHub :</strong><br><br>
-  <a href="https://softhub-bwnd.onrender.com">
-    <img src="https://img.shields.io/badge/SoftHub-Live-6366f1?style=for-the-badge&logo=render&logoColor=white"/>
-  </a>
-</p>
+### 🎨 Visual & UI/UX
 
----
+- **Cinematic 3D Backgrounds**: Powered by **Vanta.js** (Halo, Globe, Net, etc.) which dynamically adapt to Light/Dark mode.
+- **High-Res Game Covers**: Optimized PNG assets for sharp visuals and fast load times.
+- **Glassmorphism Design**: Modern, translucent UI components with smooth transitions.
+- **Fully Responsive**: Fluid layout that scales perfectly from mobile to ultra-wide displays.
+- **Typed.js Interaction**: Dynamic hero section text for an engaging first-visit experience.
 
-## Features
+### 🛡️ Backend & Security
 
-- **Modern UI** - Clean, responsive design with glassmorphism effects and 3D animations.
-- **Fully Responsive** - Optimized for all devices including mobiles, tablets, and desktops.
-- **Multi-Platform** - Browse software for Windows, macOS, and Android.
-- **Categories** - Organized sections for Browsers, Communication, Games, PDF Editors, and more.
-- **User Authentication** - Secure sign-in with email/password and OTP-based password reset.
-- **Search** - Find software quickly with integrated search functionality.
-- **Dark/Light Mode** - Automatic theme detection with manual toggle.
+- **Production-Ready Server**: Built with **Express.js** and **Mongoose**.
+- **Secure Authentication**: Salted bcrypt hashing for passwords and secure account management.
+- **OTP Password Recovery**: Integrated **Nodemailer** for email-based 6-digit verification codes.
+- **MongoDB Integration**: Robust data persistence for users and software metadata.
+- **Asset Protection**: Server-side blocking of sensitive files (.env, server.js, etc.).
 
 ---
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-| Category | Technology |
-|----------|------------|
-| **Runtime** | Node.js |
-| **Framework** | Express.js |
-| **Database** | MongoDB |
-| **Authentication** | bcrypt (password hashing) |
-| **Email** | Nodemailer (Gmail SMTP) |
-| **Frontend** | HTML5, CSS3, JavaScript |
-| **Deployment** | Render |
+| Layer | Technologies |
+|-------|--------------|
+| **Frontend** | HTML5, Vanilla CSS, JavaScript |
+| **Animation** | Vanta.js (Three.js), Typed.js |
+| **Backend** | Node.js, Express.js |
+| **Database** | MongoDB Atlas |
+| **Security** | Bcrypt, Node-Crypto |
+| **Emailing** | Nodemailer (SMTP) |
+| **Hosting** | Render |
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
-```
+```text
 SoftHub/
-├── public/                 # Static frontend files
-│   ├── index.html          # Main page
-│   ├── favicon.svg         # Site favicon
-│   ├── css/
-│   │   ├── styles.css      # Global styles
-│   │   └── category.css    # Category-specific styles
-│   ├── js/
-│   │   ├── config.js       # API configuration
-│   │   ├── main.js         # Main JavaScript
-│   │   └── background-3d.js # Vanta.js background effect
-│   ├── auth/               # Authentication pages
-│   │   ├── login.html
-│   │   ├── register.html
-│   │   └── forgot-password.html
-│   ├── categories/         # Category pages
-│   │   ├── android.html
-│   │   ├── antivirus.html
-│   │   ├── browsers.html
-│   │   ├── communication.html
-│   │   ├── games.html
-│   │   ├── macos.html
-│   │   ├── music.html
-│   │   ├── pdf-editors.html
-│   │   ├── utilities.html
-│   │   ├── video.html
-│   │   └── windows.html
-│   └── assets/             # Images and icons
-│       ├── icons/          # SVG icons for apps
-│       └── images/         # Game covers and banners
-├── src/                    # Backend source
-│   ├── models/
-│   │   └── User.js         # User model
-│   └── routes/
-│       └── auth.js         # Auth API routes
-├── server.js               # Express server
-├── package.json
-├── .env.example
-├── .gitignore
-├── render.yaml
-└── README.md
+├── public/                 # Optimized Frontend
+│   ├── index.html          # Core Interface
+│   ├── auth/               # Secure Login/Register/Forgot
+│   ├── categories/         # Multi-platform content
+│   ├── css/                # Custom Theme Engines
+│   ├── js/                 # Logic & 3D Controllers
+│   └── assets/             # High-Res Icons & Covers
+├── src/                    # Backend Source
+│   ├── models/             # Mongoose Schemas (User)
+│   └── routes/             # Authentication API
+├── server.js               # Entry Point
+├── render.yaml             # Infrastructure as Code
+└── package.json            # Dependencies
 ```
 
 ---
 
-## 🔧 Troubleshooting
+## 🚀 Getting Started
 
-### Deployment Issues
+### 1. Clone & Install
 
-#### MongoDB Connection Error (Render)
+```bash
+git clone https://github.com/ajaygangwar945/SoftHub.git
+cd SoftHub
+npm install
+```
 
-If you see `MongooseServerSelectionError` in your Render logs, it is likely due to IP whitelisting.
+### 2. Environment Setup
 
-- **Solution:** Go to your MongoDB Atlas Dashboard > Network Access > Add IP Address > Select **"Allow Access From Anywhere"** (`0.0.0.0/0`).
-- Render uses dynamic IPs, so whitelisting a single IP will not work.
+Create a `.env` file in the root:
 
-#### Login Not Working
+```env
+MONGODB_URI=your_mongodb_uri
+EMAIL_USER=your_gmail@gmail.com
+EMAIL_PASS=your_gmail_app_password
+PORT=5000
+```
 
-If the login API returns errors or timeouts:
+### 3. Launch
 
-- Ensure all **Environment Variables** (`MONGODB_URI`, `JWT_SECRET`) are correctly set in the Render Dashboard.
-- Verify your database connection string is correct.
+```bash
+# Development mode
+npm run dev
 
----
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js (v18+)
-- MongoDB (Atlas or local)
-- Gmail account (for OTP emails)
-
-### Installation
-
-1. **Clone the repository**
-
-   ```bash
-   git clone https://github.com/ajaygangwar945/SoftHub.git
-   cd SoftHub
-   ```
-
-2. **Install dependencies**
-
-   ```bash
-   npm install
-   ```
-
-3. **Configure environment**
-
-   Create a `.env` file in the root directory:
-
-   ```env
-   MONGODB_URI=your_mongodb_connection_string
-   EMAIL_USER=your_email@gmail.com
-   EMAIL_PASS=your_app_password
-   PORT=5000
-   ```
-
-4. **Run the server**
-
-   ```bash
-   # Development (with auto-reload)
-   npm run dev
-   
-   # Production
-   npm start
-   ```
-
-5. **Open in browser**
-
-   Visit `http://localhost:5000`
-
----
-
-## API Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `POST` | `/api/register` | Create new user account |
-| `POST` | `/api/signin` | Sign in existing user |
-| `POST` | `/api/send-otp` | Send password reset OTP |
-| `POST` | `/api/reset-password` | Reset password with OTP |
-
-### Example Request
-
-```javascript
-// Register a new user
-fetch('/api/register', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    name: 'John Doe',
-    email: 'john@example.com',
-    password: 'securepassword',
-    confirmPassword: 'securepassword'
-  })
-});
+# Production mode
+npm start
 ```
 
 ---
 
-## Database Schema
+## 📡 API Reference
 
-### User Model
-
-```javascript
-{
-  name: String,           // Required
-  email: String,          // Required, unique
-  password: String,       // Required, hashed
-  otp: {
-    code: String,
-    expiresAt: Date
-  },
-  createdAt: Date
-}
-```
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/register` | `POST` | User Onboarding |
+| `/api/signin` | `POST` | Secure Access |
+| `/api/send-otp` | `POST` | Trigger Password Reset |
+| `/api/reset-password` | `POST` | Finalize Recovery |
 
 ---
 
-## Security
+## 🔒 Security Best Practices
 
-- **Password Hashing** - All passwords are hashed using bcrypt with salt rounds
-- **OTP Expiry** - Reset codes expire after 10 minutes
-- **Input Validation** - All inputs are validated server-side
-- **Environment Variables** - Sensitive data stored securely
-- **Path Protection** - Sensitive files blocked from public access
-
----
-
-## Deployment
-
-This project is configured for deployment on Render. The `render.yaml` file contains the deployment configuration.
-
-### Deploy to Render
-
-1. Connect your GitHub repository to Render
-2. Render will automatically detect the `render.yaml` configuration
-3. Add your environment variables in Render dashboard
-4. Deploy!
-
----
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
+- **Environment Isolation**: Sensitive keys are never committed to version control.
+- **OTP Expiry**: Verification codes are strictly valid for 10 minutes.
+- **Data Sanitization**: Automatic removal of internal user data in API responses.
+- **CORS Enabled**: Cross-Origin Resource Sharing configured for secure interactions.
 
 ---
 
 <div align="center">
 
-### 💜 Made with Love
+### ⭐ Star this repository to show your support
 
-**Built with passion by the SoftHub Team**
-
-⭐ Star this repo if you find it useful! ⭐
+Built with 💜 by the SoftHub Team
 
 </div>
