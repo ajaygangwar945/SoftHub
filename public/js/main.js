@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initTypedAnimation();
   initSearch();
+  initSearchToggle();
   initAuthUI();
 });
 
@@ -188,9 +189,6 @@ function initTypedAnimation() {
   });
 }
 
-/**
- * Search functionality
- */
 function initSearch() {
   const searchInputs = document.querySelectorAll('.search-bar input');
 
@@ -205,6 +203,35 @@ function initSearch() {
         }
       }
     });
+  });
+}
+
+/**
+ * Mobile Search Toggle
+ */
+function initSearchToggle() {
+  const searchToggle = document.getElementById('search-toggle');
+  const navbarCenter = document.querySelector('.navbar-center');
+
+  if (!searchToggle || !navbarCenter) return;
+
+  searchToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    navbarCenter.classList.toggle('active');
+  });
+
+  // Close search when clicking outside
+  document.addEventListener('click', (e) => {
+    if (navbarCenter.classList.contains('active') && !navbarCenter.contains(e.target) && !searchToggle.contains(e.target)) {
+      navbarCenter.classList.remove('active');
+    }
+  });
+
+  // Close search on escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navbarCenter.classList.contains('active')) {
+      navbarCenter.classList.remove('active');
+    }
   });
 }
 
