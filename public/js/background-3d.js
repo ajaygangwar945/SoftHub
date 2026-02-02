@@ -106,6 +106,13 @@ function init3DBackground() {
     });
 
     observer.observe(document.documentElement, { attributes: true });
+
+    // Handle mobile address bar resizing
+    window.addEventListener('resize', () => {
+        if (vantaEffect) {
+            vantaEffect.resize();
+        }
+    });
 }
 
 // Load dependencies and init
@@ -116,16 +123,24 @@ function loadVantaDependencies(callback) {
         'https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js'
     ];
 
-    let loadedCount = 0;
-    scripts.forEach(src => {
+    function loadNext(index) {
+        if (index >= scripts.length) {
+            callback();
+            return;
+        }
+
         const script = document.createElement('script');
-        script.src = src;
-        script.onload = () => {
-            loadedCount++;
-            if (loadedCount === scripts.length) callback();
+        script.src = scripts[index];
+        script.onload = () => loadNext(index + 1);
+        script.onerror = () => {
+            console.error(`Failed to load script: ${scripts[index]}`);
+            // Continue anyway to try loading others or at least not block
+            loadNext(index + 1);
         };
         document.head.appendChild(script);
-    });
+    }
+
+    loadNext(0);
 }
 
 document.addEventListener('DOMContentLoaded', () => {

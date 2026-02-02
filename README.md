@@ -70,6 +70,7 @@ The application integrates <b>MongoDB</b> for persistent data storage and follow
 SoftHub/
 ├── public/                 # Static frontend files
 │   ├── index.html          # Main page
+│   ├── favicon.svg         # Site favicon
 │   ├── css/
 │   │   ├── styles.css      # Global styles
 │   │   └── category.css    # Category-specific styles

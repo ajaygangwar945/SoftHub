@@ -1456,11 +1456,13 @@ select {
 @media (max-width: 640px) {
   .auth-page {
     padding: 1rem;
-    align-items: flex-start;
+    min-height: 100dvh;
+    /* Use dynamic viewport height for mobile */
   }
 
   .auth-card {
-    margin-top: 2rem;
+    margin-top: 0;
+    /* Remove top margin to allow true centering */
   }
 }
 
@@ -1783,11 +1785,15 @@ select {
 
 /* 3D Background Overrides */
 .vanta-canvas {
-  position: absolute;
+  position: fixed;
+  /* Fixed to prevent scrolling issues */
   top: 0;
   left: 0;
   width: 100% !important;
-  height: 100% !important;
+  height: 100dvh !important;
+  /* Use dynamic height for mobile */
+  z-index: 0;
+  pointer-events: none;
 }
 
 .hero-content,
@@ -1960,7 +1966,10 @@ select {
   }
 
   .section-link {
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-full);
   }
 }
 
