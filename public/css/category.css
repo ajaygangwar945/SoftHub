@@ -11,6 +11,9 @@
   /* Required for z-index to work */
   z-index: 1;
   /* Establish stacking context */
+  overflow: hidden;
+  transform: translateZ(0);
+  /* Enforces border-radius clipping in Safari/Chrome */
 }
 
 @media (max-width: 640px) {

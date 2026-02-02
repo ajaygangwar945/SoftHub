@@ -754,6 +754,7 @@ select {
   transition: background var(--transition-slow);
   z-index: 1;
   /* Establish stacking context */
+  transform: translateZ(0);
 }
 
 .hero-content {

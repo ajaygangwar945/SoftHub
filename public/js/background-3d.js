@@ -3,9 +3,17 @@
  * Uses Vanta.js for premium animated backgrounds
  */
 
+let vantaEffect;
+
 function init3DBackground() {
     const hero = document.getElementById('hero-3d');
     if (!hero) return;
+
+    // Cleanup existing effect before re-initializing
+    if (vantaEffect) {
+        vantaEffect.destroy();
+        vantaEffect = null;
+    }
 
     // Determine theme and colors based on page context
     const path = window.location.pathname;
@@ -48,7 +56,7 @@ function init3DBackground() {
     const finalBgColor = getHexFromVar('--bg-main');
     const finalPointsColor = color; // Keep points bright
 
-    let vantaEffect;
+
 
     try {
         if (effectType === 'FOG') {
@@ -88,31 +96,35 @@ function init3DBackground() {
         console.error('Vanta initialization failed:', err);
     }
 
-    // Handle theme changes
-    const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-            if (mutation.attributeName === 'data-theme') {
-                const newStyles = getComputedStyle(document.documentElement);
-                const newBgColorStr = newStyles.getPropertyValue('--bg-main').trim();
-                const newBgColor = parseInt(newBgColorStr.replace('#', '0x'), 16);
+    // ... logic above ...
 
-                if (vantaEffect) {
-                    // Re-initialize for visibility and color updates
-                    vantaEffect.destroy();
+    // Handle theme changes - prevent duplicate observers
+    if (!window._themeObserver) {
+        window._themeObserver = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'data-theme') {
+                    // Re-initialize for color updates
                     init3DBackground();
                 }
-            }
+            });
         });
-    });
+        window._themeObserver.observe(document.documentElement, { attributes: true });
+    }
 
-    observer.observe(document.documentElement, { attributes: true });
+    // Cleanup previous resize observer
+    if (hero._vantaResizeObserver) {
+        hero._vantaResizeObserver.disconnect();
+    }
 
-    // Handle mobile address bar resizing
-    window.addEventListener('resize', () => {
+    // Use ResizeObserver for robust responsiveness (sidebar toggles, layout shifts)
+    const resizeObserver = new ResizeObserver(() => {
         if (vantaEffect) {
             vantaEffect.resize();
         }
     });
+
+    resizeObserver.observe(hero);
+    hero._vantaResizeObserver = resizeObserver;
 }
 
 // Load dependencies and init
