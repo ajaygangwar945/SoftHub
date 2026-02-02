@@ -6,10 +6,17 @@ document.addEventListener('DOMContentLoaded', () => {
   initSidebar();
   initTheme();
   initTypedAnimation();
-  initSearch();
-  initSearchToggle();
+
   initAuthUI();
 });
+
+/**
+ * Helper to get correct relative path to auth pages
+ */
+function getAuthPath(page = 'login.html') {
+  const isSubPage = window.location.pathname.includes('/categories/') || window.location.pathname.includes('/auth/');
+  return isSubPage ? `../auth/${page}` : `auth/${page}`;
+}
 
 /**
  * Initialize Auth UI
@@ -58,7 +65,7 @@ function updateNavbarAuth(user) {
 
       if (!signInBtn) {
         const btn = document.createElement('a');
-        btn.href = 'auth/login.html';
+        btn.href = getAuthPath();
         btn.className = 'btn btn-primary';
         btn.textContent = 'Sign In';
         navbarRight.appendChild(btn);
@@ -103,7 +110,7 @@ function updateSidebarAuth(user) {
     // Insert after sidebar-user
     sidebarUser.parentNode.insertBefore(logoutBtn, sidebarUser.nextSibling);
   } else {
-    sidebarUser.href = 'auth/login.html';
+    sidebarUser.href = getAuthPath();
     sidebarUser.onclick = null;
 
     title.textContent = 'Sign In';
@@ -189,51 +196,12 @@ function initTypedAnimation() {
   });
 }
 
-function initSearch() {
-  const searchInputs = document.querySelectorAll('.search-bar input');
 
-  searchInputs.forEach(input => {
-    input.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        const query = input.value.trim();
-        if (query) {
-          // For now, just log - can be extended for actual search
-          console.log('Searching for:', query);
-          // window.location.href = `/search?q=${encodeURIComponent(query)}`;
-        }
-      }
-    });
-  });
-}
 
 /**
  * Mobile Search Toggle
  */
-function initSearchToggle() {
-  const searchToggle = document.getElementById('search-toggle');
-  const navbarCenter = document.querySelector('.navbar-center');
 
-  if (!searchToggle || !navbarCenter) return;
-
-  searchToggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    navbarCenter.classList.toggle('active');
-  });
-
-  // Close search when clicking outside
-  document.addEventListener('click', (e) => {
-    if (navbarCenter.classList.contains('active') && !navbarCenter.contains(e.target) && !searchToggle.contains(e.target)) {
-      navbarCenter.classList.remove('active');
-    }
-  });
-
-  // Close search on escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && navbarCenter.classList.contains('active')) {
-      navbarCenter.classList.remove('active');
-    }
-  });
-}
 
 /**
  * Show notification toast

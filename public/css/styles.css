@@ -892,7 +892,7 @@ select {
 
 .trending-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1.25rem;
 }
 
@@ -925,6 +925,7 @@ select {
   background: var(--soft-bg);
   border-radius: var(--radius-lg);
   transition: background var(--transition-fast);
+  flex-shrink: 0;
 }
 
 .trending-card:hover .trending-icon {
@@ -2027,7 +2028,7 @@ select {
 }
 
 /* Mobile Trending Grid */
-@media (max-width: 640px) {
+@media (max-width: 850px) {
   .trending-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem;
