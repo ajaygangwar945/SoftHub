@@ -1,4 +1,3 @@
-<img align="center" src="public/assets/images/banner_placeholder.svg" width="100%" height="200" style="object-fit: cover">
 
 <h1 align="center">🚀 SoftHub</h1>
 
@@ -64,16 +63,18 @@
 SoftHub/
 ├── public/                 # Optimized Frontend
 │   ├── index.html          # Core Interface
+│   ├── favicon.svg         # Site Icon
 │   ├── auth/               # Secure Login/Register/Forgot
 │   ├── categories/         # Multi-platform content
 │   ├── css/                # Custom Theme Engines
 │   ├── js/                 # Logic & 3D Controllers
-│   └── assets/             # High-Res Icons & Covers
+│   └── assets/             # Icons & Cover Graphics
 ├── src/                    # Backend Source
-│   ├── models/             # Mongoose Schemas (User)
+│   ├── models/             # Mongoose Schemas
 │   └── routes/             # Authentication API
-├── server.js               # Entry Point
+├── .env.example            # Environment Template
 ├── render.yaml             # Infrastructure as Code
+├── server.js               # Express Server Entry
 └── package.json            # Dependencies
 ```
 
