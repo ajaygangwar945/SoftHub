@@ -1,3 +1,4 @@
+<img align="center" src="public/assets/images/banner_placeholder.svg" width="100%" height="200" style="object-fit: cover">
 
 <h1 align="center">🚀 SoftHub</h1>
 
@@ -64,18 +65,20 @@ SoftHub/
 ├── public/                 # Optimized Frontend
 │   ├── index.html          # Core Interface
 │   ├── favicon.svg         # Site Icon
-│   ├── auth/               # Secure Login/Register/Forgot
-│   ├── categories/         # Multi-platform content
-│   ├── css/                # Custom Theme Engines
-│   ├── js/                 # Logic & 3D Controllers
-│   └── assets/             # Icons & Cover Graphics
-├── src/                    # Backend Source
-│   ├── models/             # Mongoose Schemas
-│   └── routes/             # Authentication API
-├── .env.example            # Environment Template
-├── render.yaml             # Infrastructure as Code
-├── server.js               # Express Server Entry
-└── package.json            # Dependencies
+│   ├── auth/               # Access Control (Login/Register)
+│   ├── categories/         # Platform-Specific Collections
+│   ├── css/                # Modern Styling Engines
+│   ├── js/                 # Interactive Logic & 3D Controllers
+│   └── assets/             # Media Resources
+│       ├── icons/          # App & Platform SVGs
+│       └── images/         # Game Covers & Banners
+├── src/                    # Backend Logic
+│   ├── models/             # Database Schemas (Mongoose)
+│   └── routes/             # API Endpoints (Auth)
+├── .env.example            # Environment Configuration Template
+├── render.yaml             # Deployment Configuration
+├── server.js               # Node.js Server Entry Point
+└── package.json            # Project Manifest & Metadata
 ```
 
 ---
