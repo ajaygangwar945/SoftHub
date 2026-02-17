@@ -49,9 +49,14 @@
   --radius-full: 9999px;
 
   /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-base: 200ms ease;
-  --transition-slow: 300ms ease;
+  --transition-fast: 150ms var(--ease-premium);
+  --transition-base: 250ms var(--ease-premium);
+  --transition-slow: 400ms var(--ease-premium);
+
+  /* Premium Easing */
+  --ease-premium: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-soft: cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* For bouncy soft effects */
 
   /* Spacing */
   --container-max: 1400px;
@@ -161,6 +166,18 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   overflow-x: hidden;
+  opacity: 0;
+  animation: pageFade 0.6s var(--ease-premium) forwards;
+}
+
+@keyframes pageFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 a {
@@ -212,10 +229,21 @@ select {
   flex: 1;
   margin-left: var(--sidebar-width);
   transition: margin-left var(--transition-slow);
-  width: 100%;
-  /* Ensure proper width */
   min-width: 0;
   /* Crucial for preventing flex item overflow */
+  animation: contentFadeUp 0.8s var(--ease-premium) forwards;
+}
+
+@keyframes contentFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 1024px) {
@@ -334,14 +362,19 @@ select {
 .logo-icon {
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg, var(--primary), #8b5cf6);
-  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--primary), #818cf8);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   font-weight: 800;
-  font-size: 1.25rem;
+  font-size: 1.4rem;
+  line-height: 1;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  text-transform: lowercase;
+  padding-bottom: 2px;
+  /* Visual adjustment for lowercase 's' centering */
 }
 
 /* Search Bar */
@@ -793,6 +826,83 @@ select {
   .hero-title {
     font-size: 2rem;
   }
+}
+
+/* ============================================
+   Animations & Transitions
+   ============================================ */
+
+.animate-fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s var(--ease-premium) forwards;
+}
+
+.animate-slide-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 0.8s var(--ease-premium) forwards;
+}
+
+.animate-scale-in {
+  opacity: 0;
+  transform: scale(0.95);
+  animation: scaleIn 0.5s var(--ease-soft) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Scroll Reveal Base */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s var(--ease-premium);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Interactive Elements */
+.soft-lift {
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.soft-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px -10px var(--shadow-color);
 }
 
 .hero::before {

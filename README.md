@@ -30,6 +30,8 @@
 
 - **Cinematic 3D Backgrounds**: Powered by **Vanta.js** (Halo, Globe, Net, etc.) which dynamically adapt to Light/Dark mode.
 - **High-Res Game Covers**: Optimized PNG assets for sharp visuals and fast load times.
+- **Premium Animation Engine**: Custom cubic-bezier easing and hardware-accelerated transitions for a buttery-smooth experience.
+- **Scroll Reveal System**: High-performance `IntersectionObserver` based animations that trigger dynamically as you explore the site.
 - **Glassmorphism Design**: Modern, translucent UI components with smooth transitions.
 - **Fully Responsive**: Fluid layout that scales perfectly from mobile to ultra-wide displays.
 - **Typed.js Interaction**: Dynamic hero section text for an engaging first-visit experience.

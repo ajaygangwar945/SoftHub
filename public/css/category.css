@@ -254,7 +254,7 @@
 
 .animate-fade-in-up {
   opacity: 0;
-  animation: fadeInUp 0.6s ease forwards;
+  animation: fadeInUp 0.8s var(--ease-premium) forwards;
 }
 
 .delay-300 {
@@ -263,7 +263,7 @@
 
 .stagger-reveal>* {
   opacity: 0;
-  animation: fadeInUp 0.6s ease forwards;
+  animation: fadeInUp 0.8s var(--ease-premium) forwards;
 }
 
 /* Specific delays for staggered reveal (up to 12 items) */

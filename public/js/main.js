@@ -8,7 +8,40 @@ document.addEventListener('DOMContentLoaded', () => {
   initTypedAnimation();
 
   initAuthUI();
+  initScrollReveal();
 });
+
+/**
+ * Scroll Reveal Implementation
+ */
+function initScrollReveal() {
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        // If it's a stagger-reveal container, stagger its children
+        if (entry.target.classList.contains('stagger-reveal')) {
+          const children = entry.target.children;
+          Array.from(children).forEach((child, index) => {
+            child.style.transitionDelay = `${index * 0.1}s`;
+            child.classList.add('active');
+          });
+        }
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Observe all elements with .reveal class
+  document.querySelectorAll('.reveal, .stagger-reveal').forEach(el => {
+    observer.observe(el);
+  });
+}
 
 /**
  * Helper to get correct relative path to auth pages
