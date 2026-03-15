@@ -17,9 +17,6 @@
 
 **SoftHub** is a high-performance, full-stack software distribution platform. It combines a cinematic frontend experience with a robust, secure Node.js backend. Designed for speed and visual excellence, SoftHub provides a seamless way to discover and download apps for Windows, macOS, and Android.
 
-> [!NOTE]
-> For a deep dive into the technical architecture, design rationale, and core logic, please refer to the [Technical Documentation](project_details.txt).
-
 ---
 
 ## ✨ Key Features
