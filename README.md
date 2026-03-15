@@ -15,12 +15,10 @@
 
 ---
 
-## 📖 Project Overview
-
 **SoftHub** is a high-performance, full-stack software distribution platform. It combines a cinematic frontend experience with a robust, secure Node.js backend. Designed for speed and visual excellence, SoftHub provides a seamless way to discover and download apps for Windows, macOS, and Android.
 
-> [!IMPORTANT]
-> This version features an overhauled 3D background system and high-resolution high-performing assets for a premium user experience.
+> [!NOTE]
+> For a deep dive into the technical architecture, design rationale, and core logic, please refer to the [Technical Documentation](project_details.txt).
 
 ---
 
@@ -50,12 +48,12 @@
 
 | Layer | Technologies |
 |-------|--------------|
-| **Frontend** | HTML5, Vanilla CSS, JavaScript |
-| **Animation** | Vanta.js (Three.js), Typed.js |
+| **Frontend** | HTML5, Vanilla CSS (Glassmorphism), JavaScript (ES6+) |
+| **Animation** | Vanta.js (Three.js), Typed.js, Intersection Observer |
 | **Backend** | Node.js, Express.js |
-| **Database** | MongoDB Atlas |
-| **Security** | Bcrypt, Node-Crypto |
-| **Emailing** | Nodemailer (SMTP) |
+| **Database** | MongoDB Atlas (Mongoose ODM) |
+| **Security** | Bcrypt, Node-Crypto (Secure Tokens) |
+| **Emailing** | Nodemailer (SMTP/OTP) |
 | **Hosting** | Render |
 
 ---
@@ -65,22 +63,21 @@
 ```text
 SoftHub/
 ├── public/                 # Optimized Frontend
-│   ├── index.html          # Core Interface
+│   ├── index.html          # Core Interface (Main Landing Page)
 │   ├── favicon.svg         # Site Icon
-│   ├── auth/               # Access Control (Login/Register)
-│   ├── categories/         # Platform-Specific Collections
-│   ├── css/                # Modern Styling Engines
+│   ├── auth/               # Access Control (Login/Register/Forgot)
+│   ├── categories/         # Platform & Software Collections
+│   ├── css/                # Styling Engines (Styles & Categories)
 │   ├── js/                 # Interactive Logic & 3D Controllers
-│   └── assets/             # Media Resources
-│       ├── icons/          # App & Platform SVGs
-│       └── images/         # Game Covers & Banners
-├── src/                    # Backend Logic
+│   └── assets/             # Media Resources (Icons & Banners)
+├── src/                    # Backend Source Code
 │   ├── models/             # Database Schemas (Mongoose)
-│   └── routes/             # API Endpoints (Auth)
-├── .env.example            # Environment Configuration Template
-├── render.yaml             # Deployment Configuration
+│   └── routes/             # API Endpoints (Auth & OTP)
 ├── server.js               # Node.js Server Entry Point
-└── package.json            # Project Manifest & Metadata
+├── package.json            # Project Manifest & Metadata
+├── render.yaml             # Deployment Configuration
+├── .env.example            # Environment Configuration Template
+└── .env                    # Environment Variables (Secrets)
 ```
 
 ---

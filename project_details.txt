@@ -1,0 +1,85 @@
+SOFTHUB PROJECT DETAILS
+======================
+
+1. PROJECT OVERVIEW
+------------------
+SoftHub is a high-performance, full-stack software distribution platform. It is designed to provide a cinematic user experience while maintaining a robust and secure backend. The platform facilitates the discovery and downloading of software across multiple platforms including Windows, macOS, and Android.
+
+2. TECH STACK
+-------------
+* Frontend: 
+    - HTML5 & Semantic HTML
+    - Vanilla CSS (Glassmorphism, Custom Ease Animations)
+    - JavaScript (ES6+)
+    - Vanta.js (3D Background Visuals)
+    - Typed.js (Dynamic Text Interactions)
+    - Intersection Observer (Scroll Reveal System)
+
+* Backend:
+    - Node.js (Runtime Environment)
+    - Express.js (Web Framework)
+    - Mongoose (Object Data Modeling for MongoDB)
+
+* Database:
+    - MongoDB Atlas (Cloud NoSQL Database)
+
+* Security & Emailing:
+    - Bcrypt (Password Hashing)
+    - Node-Crypto (Secure Token Generation)
+    - Nodemailer (SMTP for OTP Verification)
+
+3. RATIONALE BEHIND TECHNOLOGY SELECTION
+----------------------------------------
+* Vanilla CSS & JS: Chosen to ensure maximum performance, minimal dependency bloat, and complete control over cinematic animations and visual aesthetics.
+* Express.js: Selected for its reliability, middleware ecosystem, and efficient handling of API endpoints.
+* MongoDB: Used for its flexible schema, which allows for evolving software metadata and user profile structures.
+* Nodemailer: Provides a reliable way to implement 2-Factor Authentication (OTP) for account security and recovery.
+
+4. CORE FUNCTIONALITY & LOGIC
+-----------------------------
+* Dynamic UI: Uses Vanta.js to create immersive 3D backgrounds that respond to lighting modes. Animations are hardware-accelerated for smoothness.
+* Authentication System: Secure sign-up and sign-in logic using bcrypt for hashing. Includes protected routes to prevent unauthorized access to sensitive endpoints.
+* Password Recovery: A specialized logic flow where users request an OTP via email, verify it, and then securely update their password.
+* Platform Filtering: Organized categories for Windows, macOS, and Android, allowing users to quickly find platform-specific tools.
+* Performance Optimization: Implements high-performance scroll triggers and optimized asset loading to maintain a premium feel across all devices.
+
+5. PROJECT STRUCTURE
+--------------------
+SoftHub/
+├── public/                 # Optimized Frontend
+│   ├── index.html          # Core Interface (Main Landing Page)
+│   ├── favicon.svg         # Site Icon
+│   ├── auth/               # Access Control & Authentication Pages
+│   │   ├── login.html      # User Sign-in Page
+│   │   ├── register.html   # User Account Creation Page
+│   │   └── forgot-password.html # Password Recovery Page
+│   ├── categories/         # Platform & Software Collections
+│   │   ├── windows.html    # Windows Software Hub
+│   │   ├── macos.html      # macOS Software Hub
+│   │   ├── android.html    # Android App Hub
+│   │   ├── games.html      # Game Collection
+│   │   └── (antivirus.html, browsers.html, music.html, etc.)
+│   ├── css/                # Styling Engines
+│   │   ├── styles.css      # Core Design & Global Animations
+│   │   └── category.css    # Layouts for Software Categorization
+│   ├── js/                 # Interactive Logic
+│   │   ├── main.js         # Core Event Listeners & UI Logic
+│   │   ├── background-3d.js # Vanta.js & Three.js Controllers
+│   │   └── config.js       # App Configuration & Constants
+│   └── assets/             # Media Resources
+│       ├── icons/          # 60+ App & Platform SVG Icons
+│       └── images/         # Game Covers & UI Banners
+├── src/                    # Backend Source Code
+│   ├── models/             # Mongoose Schemas
+│   │   └── User.js         # User Data Model
+│   └── routes/             # API Endpoint Controllers
+│       └── auth.js         # Authentication & OTP Logic
+├── server.js               # Express Server & Database Connection
+├── package.json            # Dependencies & Scripts
+├── render.yaml             # Render Deployment Configuration
+├── .env                    # Environment Variables (Secrets)
+└── .env.example            # Environment Configuration Template
+
+--------------------------------------------------
+Created on: 2026-03-15
+SoftHub Team
