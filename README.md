@@ -74,7 +74,8 @@ SoftHub/
 ├── package.json            # Project Manifest & Metadata
 ├── render.yaml             # Deployment Configuration
 ├── .env.example            # Environment Configuration Template
-└── .env                    # Environment Variables (Secrets)
+├── .env                    # Environment Variables (Secrets)
+└── project_details.txt     # Key Project Architecture & Logic Summary
 ```
 
 ---
