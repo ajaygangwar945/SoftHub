@@ -989,7 +989,14 @@ select {
   color: var(--primary);
   font-weight: 600;
   font-size: 0.875rem;
+  line-height: 1;
   transition: gap var(--transition-fast);
+}
+
+.section-link svg {
+  display: block;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
 }
 
 .section-link:hover {
@@ -2074,14 +2081,26 @@ select {
   .section-header {
     flex-direction: column;
     align-items: flex-start;
+    text-align: left;
     gap: 0.5rem;
   }
 
   .section-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-size: 0.875rem;
-    padding: 0.5rem 0.75rem;
+    padding: 0.5rem 0.875rem;
     background: var(--bg-secondary);
     border-radius: var(--radius-full);
+    line-height: 1;
+    border: 1px solid var(--border);
+  }
+
+  .section-link svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.5;
   }
 }
 
